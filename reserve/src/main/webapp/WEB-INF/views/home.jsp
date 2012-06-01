@@ -9,6 +9,13 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+
+<form name="test" action='/reserve/user/duplicate'  method="get">
+	<input type="text" name="userId" />
+	<br>
+	<input type="submit" value="submit">
+
+</form>
+
 </body>
 </html>
