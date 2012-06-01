@@ -11,8 +11,8 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao{
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public int userCount() {
-		return (Integer) getSqlSession().selectOne("com.narratage.reserve.user.dao.UserDao.userCount");
+	public int duplicateUser(String id) {
+		return (Integer) getSqlSession().selectOne("com.narratage.reserve.user.dao.UserDao.duplicateUser", id);
 			
 	}
 

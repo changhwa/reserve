@@ -6,9 +6,10 @@
 
   <cache />
 
-  <select id="userCount" resultType="int">
+  <select id="duplicateUser" parameterType="String" resultType="int">
     SELECT count(*)
     FROM users
+    WHERE id=#{id}
   </select>
 
 </mapper>
