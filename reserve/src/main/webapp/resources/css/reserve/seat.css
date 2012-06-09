@@ -1,0 +1,33 @@
+.noReserveSeat {
+	width: 10px;
+	height: 10px;
+	border: solid 1px #000000;
+	background-color: #000000;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	float:left;
+	margin-right: 1px;
+	margin-left: 1px;
+}
+
+.reserveSeat{
+	width: 10px;
+	height: 10px;
+	border: solid 1px #000000;
+	background-color: #FF0000;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	float:left;
+	margin-right: 1px;
+	margin-left: 1px;
+}
+
+.blankSeat{
+	width: 10px;
+	height: 10px;
+	float:left;
+	margin-right: 1px;
+	margin-left: 1px;
+}
