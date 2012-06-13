@@ -9,7 +9,7 @@ public class ReservationContoller {
 	
 	@RequestMapping(value="/reserv/seat")
 	public String seatView(ModelMap model){
-		String a = "00120110023001001001";
+		String a = "0012011002301001001";
 		char test[] = a.toCharArray();
 		model.addAttribute("nums", test);
 	
