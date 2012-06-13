@@ -10,4 +10,9 @@ public class ReservLayout {
 	public String showMain(){
 		return "/reserv/main";
 	}
+	
+	@RequestMapping(value="/reserv/ticket")
+	public String showTicket(){
+		return "/reserv/ticket";
+	}
 }
