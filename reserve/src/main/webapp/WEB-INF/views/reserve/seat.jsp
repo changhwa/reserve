@@ -19,7 +19,7 @@
 				<div class="blankSeat"></div>
 			</c:when>
 			<c:when test="${num=='1' }">
-				<div class="noReserveSeat"></div>
+				<li class="noReserveSeat"></div>
 			</c:when>
 			<c:when test="${num=='2' }">
 				<div class="reserveSeat"></div>
