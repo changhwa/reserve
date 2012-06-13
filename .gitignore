@@ -1,1 +1,9 @@
 reserve/target/m2e-wtp/web-resources/META-INF/maven/com.narratage/reserve/pom.properties
+reserve/target/
+reserve/target/classes/log4j.xml
+reserve/target/classes/mybatis/application-mybatis.xml
+reserve/target/classes/mybatis/mapper/user/user.xml
+reserve/target/classes/properties/mysql.properties
+reserve/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+reserve/target/m2e-wtp/web-resources/META-INF/maven/com.narratage/reserve/pom.xml
+reserve/target/test-classes/log4j.xml
