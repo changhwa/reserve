@@ -6,8 +6,8 @@ import com.narratage.reserve.flightinformation.domain.Airport;
 
 
 /**
- * @author StevePak
  * 공항정보를 가져오는 DAO클래스
+ * @author StevePak
  **/
 
 public interface AirportDao {
@@ -17,9 +17,10 @@ public interface AirportDao {
 	 */
 	public Airport getAirportInfo(String IATA);
 	/**
-	 * @param IATA 공항코드
 	 * 공항코드를 param값으로 받으면, 해당 공항의 검색횟수를 1씩 올립니다.
 	 * 주요 곻항의 경우 조금더 자주 호출됩니다.
+	 * @param IATA 공항코드
+
 	 */
 	public void updatePlusOneAtQueriedNumber(String IATA);
 	
