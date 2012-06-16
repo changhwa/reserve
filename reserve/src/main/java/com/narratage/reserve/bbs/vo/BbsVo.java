@@ -1,6 +1,6 @@
-package com.narratage.reserve.bbs.service;
+package com.narratage.reserve.bbs.vo;
 
-public class BbsBean {
+public class BbsVo {
 
 	  private int intBbsId;
 	  private String strTitle;
