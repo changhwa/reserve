@@ -1,5 +1,8 @@
 package com.narratage.reserve.bbs.dao;
 
-public class BbsDao {
-
+public interface BbsDao {
+	
+	public void detailBbs(String strBbsId);
+	
+	
 }
