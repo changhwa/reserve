@@ -6,7 +6,7 @@
 	-moz-border-radius: 1px;
 	-webkit-border-radius: 1px;
 	border-radius: 1px;
-	float:left;
+	float: left;
 	margin-right: 1px;
 	margin-left: 1px;
 }
@@ -19,7 +19,7 @@
 	-moz-border-radius: 1px;
 	-webkit-border-radius: 1px;
 	border-radius: 1px;
-	float:left;
+	float: left;
 	margin-right: 1px;
 	margin-left: 1px;
 }
@@ -27,7 +27,12 @@
 .blankSeat{
 	width: 10px;
 	height: 10px;
-	float:left;
+	border: solid 1px #FFFFFF;
+	background-color: #FFFFFF;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	float: left;
 	margin-right: 1px;
 	margin-left: 1px;
 }

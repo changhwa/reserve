@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.narratage.reserve.airplane.dao.SeatDao">
+
+  <cache />
+
+  <select id="findSeat" parameterType="String" resultType="String">
+  	SELECT seatValue
+  	FROM seat_inform A, airplane_inform B, airinform C
+  	WHERE C.airinformCode =#{airinformCode}
+  	AND C.airplaneCode = B.airplaneCode
+  	AND B.seatCode = A.seatCode   
+  </select>
+
+</mapper>

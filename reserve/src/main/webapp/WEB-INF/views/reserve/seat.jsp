@@ -11,15 +11,15 @@
 </head>
 <body>
 	
-	<c:forEach var="num" items="${nums }">
-
+	<c:forEach var="num" items="${seatNum}">
+	
+	
 		<c:choose>
 			<c:when test="${num=='0' }">
-			
 				<div class="blankSeat"></div>
 			</c:when>
 			<c:when test="${num=='1' }">
-				<li class="noReserveSeat"></div>
+				<div class="noReserveSeat"></div>
 			</c:when>
 			<c:when test="${num=='2' }">
 				<div class="reserveSeat"></div>
