@@ -9,6 +9,4 @@ public interface AirplaneService {
 	public ArrayList findAllAirplane();
 	public ArrayList findAirplane(String airplaneCode);
 	public boolean deleteAirplane(String airplaneCode);
-	public String findSeat(String airplaneCode);
-	public boolean modifySeat(String airplaneCode);
 }
