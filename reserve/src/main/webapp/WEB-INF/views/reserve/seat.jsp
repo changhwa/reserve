@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/reserve/resources/css/reserve/seat.css" rel="stylesheet"
-	type="text/css" />
+<script type="text/javascript" src="/reserve/resources/_Shared/js/lib/jquery-1.7.2.js"></script>
+<link href="/reserve/resources/css/reserve/seat.css" rel="stylesheet" 	type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
