@@ -17,4 +17,4 @@ CREATE TABLE `member` (
   `receive_mail` bit(1) DEFAULT NULL,
   `receive_sms` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
