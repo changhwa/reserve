@@ -21,7 +21,7 @@ public class AirportDaoMybatis extends SqlSessionDaoSupport implements
 
 	public void updatePlusOneAtQueriedNumber(String IATA) {
 	}
-
+	
 	public List<Airport> getAirports4Map(double topLeftLat, double topLeftLong,
 			double botRightLat, double botRightLong, int MaximumCitiesNumber) {
 		// TODO Auto-generatded method stub
