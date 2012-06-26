@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--     
+ 	/**
+     * BBS 테이블 쿼리 정의 파일
+     * @identify bbs.xml
+     * @author 안경모
+     * @since 2012-06-26
+     *
+     * Copyright (C)2012 by Angyeongmo Co. Ltd. All right reserved.
+     */
+  --> 
+
+<mapper namespace="com.narratage.reserve.bbs.dao.BbsDao">
+
+  <cache />
+
+	<resultMap type="BbsVO" id="bbs-info">
+		<id property="bbsId" column="bbs_id" />
+		<result property="title" column="title" />
+		<result property="insertDt" column="insert_dt" />
+		<result property="insertAdminId" column="insert_admin_id" />
+		<result property="updateDt" column="update_dt" />
+		<result property="updateAdminId" column="update_admin_id" />
+		<result property="content" column="content" />
+		<result property="picture" column="picture" />
+		<result property="comment" column="comment" />
+		<result property="likeCnt" column="like_cnt" />
+		<result property="viewCnt" column="view_cnt" />
+		<result property="htmlYn" column="html_yn" />
+		<result property="country" column="country" />
+		<result property="city" column="city" />
+		<result property="subjectSchedule" column="subject_schedule" />
+		<result property="probableCost" column="probable_cost" />
+	</resultMap>
+	
+	
+	<!-- 	    
+		/**
+	     * BBS 테이블 select 쿼리
+	     * @author 안경모
+	     * @since 2012-06-26
+	     */
+  	--> 
+	<select id="selectBbsList" resultMap="bbs-info">
+		SELECT bbs_id,
+		title,
+		insert_dt,
+		insert_admin_id,
+		update_dt,
+		update_admin_id,
+		content,
+		picture,
+		comment,
+		like_cnt,
+		view_cnt,
+		html_yn,
+		country,
+		city,
+		subject_schedule,
+		probable_cost
+		FROM bbs
+		ORDER BY bbs_id DESC
+	</select>
+	
+	<!-- 	    
+		/**
+	     * BBS 테이블 detail 쿼리
+	     * @author 안경모
+	     * @since 2012-06-26
+	     */
+  	--> 
+	<select id="selectBbsDetail" parameterType="BbsVO" resultMap="bbs-info">
+	  	SELECT bbs_id,
+		title,
+		insert_dt,
+		insert_admin_id,
+		update_dt,
+		update_admin_id,
+		content,
+		picture,
+		comment,
+		like_cnt,
+		view_cnt,
+		html_yn,
+		country,
+		city,
+		subject_schedule,
+		probable_cost
+		FROM bbs
+		WHERE bbs_id = #{bbsId}
+	</select>
+  
+  
+  	<!-- 	    
+		/**
+	     * BBS 테이블 insert 쿼리
+	     * @author 안경모
+	     * @since 2012-06-26
+	     */
+  	--> 
+	<insert id="insertBbs" parameterType="BbsVO">
+		INSERT INTO bbs (
+		bbs_id,
+		title,
+		insert_dt, 
+		insert_admin_id, 
+		update_dt, 
+		update_admin_id, 
+		content, 
+		picture, 
+		comment, 
+		like_cnt,
+		view_cnt, 
+		html_yn, 
+		country, 
+		city, 
+		subject_schedule, 
+		probable_cost)
+		VALUES (
+		#{bbsId}, 
+		#{title}, 
+		#{insertDt}, 
+		#{insertAdminId}, 
+		#{updateDt}, 
+		#{updateAdminId}, 
+		#{content}, 
+		#{picture}, 
+		#{comment}, 
+		#{likeCnt}, 
+		#{viewCnt},
+		#{htmlYn}, 
+		#{country},
+		#{city}, 
+		#{subjectSchedule}, 
+		#{probableCost})
+	</insert>
+	
+	
+	<!-- 	    
+		/**
+	     * BBS 테이블 update 쿼리
+	     * @author 안경모
+	     * @since 2012-06-26
+	     */
+  	--> 
+	<update id="updateBbs" parameterType="BbsVO">
+		UPDATE bbs
+		SET
+			title 				= #{title}
+			, update_dt 		= #{updateDt}
+			, update_admin_id 	= #{updateAdminId}
+			, content 			= #{content}
+			, picture 			= #{picture}
+			, comment 			= #{comment}
+			, like_cnt 			= #{likeCnt}
+			, view_cnt 			= #{viewCnt}
+			, html_yn 			= #{htmlYn}
+			, country 			= #{country}
+			, city 				= #{city}
+			, subject_schedule  = #{subjectSchedule}
+			, probable_cost 	= #{probableCost}
+		WHERE
+			bbs_id = #{bbsId}
+	</update>
+	
+
+	<!-- 	    
+		/**
+	     * BBS 테이블 delete 쿼리
+	     * @author 안경모
+	     * @since 2012-06-26
+	     */
+  	--> 
+	<delete id="deleteBbs" parameterType="BbsVO">
+		DELETE FROM bbs WHERE bbs_id = #{bbsId}
+	</delete>
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
