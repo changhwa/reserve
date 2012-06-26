@@ -6,7 +6,6 @@ import com.narratage.reserve.flightinformation.domain.Airport;
 
 /**
  * 공항정보를 가져오는 DAO클래스
- * 
  * @author StevePak
  **/
 
