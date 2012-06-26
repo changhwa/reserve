@@ -27,10 +27,10 @@ public class BbsServiceImpl implements BbsService {
 	 public int insertBbs(BbsVo BbsVo) {
 		 return 1;
 	 }
-	 public int updateBbs(Integer BbsId) {
+	 public int updateBbs(Integer bbsId) {
 		 return 1;
 	 }
-	 public int deleteBbs(Integer BbsId) {
+	 public int deleteBbs(Integer bbsId) {
 		 return 1;
 	 }
 	
