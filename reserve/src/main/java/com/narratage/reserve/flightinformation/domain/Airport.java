@@ -1,99 +1,99 @@
 package com.narratage.reserve.flightinformation.domain;
 
 public class Airport {
-	private int AirportNo;
-	private String IATA;
-	private String City;
-	private String Contry;
-	private Double Latitude;
-	private Double Longtitude;
-	private float Altitude;
-	private float Timezone;
-	private String DST;
-	private int Queried_number;
+	private int airportNo;
+	private String iata;
+	private String city;
+	private String contry;
+	private Double latitude;
+	private Double longtitude;
+	private float altitude;
+	private float timezosne;
+	private String dst;
+	private int queriedNumber;
 
 	public Airport() {
 		super();
 	}
 
 	public int getAirportNo() {
-		return AirportNo;
+		return airportNo;
 	}
 
 	public void setAirportNo(int airportNo) {
-		AirportNo = airportNo;
+		this.airportNo = airportNo;
 	}
 
-	public String getIATA() {
-		return IATA;
+	public String getIata() {
+		return iata;
 	}
 
-	public void setIATA(String iATA) {
-		IATA = iATA;
+	public void setIata(String iata) {
+		this.iata = iata;
 	}
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 	public String getContry() {
-		return Contry;
+		return contry;
 	}
 
 	public void setContry(String contry) {
-		Contry = contry;
+		this.contry = contry;
 	}
 
 	public Double getLatitude() {
-		return Latitude;
+		return latitude;
 	}
 
 	public void setLatitude(Double latitude) {
-		Latitude = latitude;
+		this.latitude = latitude;
 	}
 
 	public Double getLongtitude() {
-		return Longtitude;
+		return longtitude;
 	}
 
 	public void setLongtitude(Double longtitude) {
-		Longtitude = longtitude;
+		this.longtitude = longtitude;
 	}
 
 	public float getAltitude() {
-		return Altitude;
+		return altitude;
 	}
 
 	public void setAltitude(float altitude) {
-		Altitude = altitude;
+		this.altitude = altitude;
 	}
 
-	public float getTimezone() {
-		return Timezone;
+	public float getTimezosne() {
+		return timezosne;
 	}
 
-	public void setTimezone(float timezone) {
-		Timezone = timezone;
+	public void setTimezosne(float timezosne) {
+		this.timezosne = timezosne;
 	}
 
-	public String getDST() {
-		return DST;
+	public String getDst() {
+		return dst;
 	}
 
-	public void setDST(String dST) {
-		DST = dST;
+	public void setDst(String dst) {
+		this.dst = dst;
 	}
 
-	public int getQueried_number() {
-		return Queried_number;
+	public int getQueriedNumber() {
+		return queriedNumber;
 	}
 
-	public void setQueried_number(int queried_number) {
-		Queried_number = queried_number;
+	public void setQueriedNumber(int queriedNumber) {
+		this.queriedNumber = queriedNumber;
 	}
 
 }

@@ -16,12 +16,12 @@ public class AirportDaoMybatis extends SqlSessionDaoSupport implements
 	private SqlSessionFactory sqlSessionFactory;
 
 	public Airport getAirportInfo(String IATA) {
-		return (Airport) getSqlSession().selectOne("flightinformation.", IATA);
+		return (Airport) getSqlSession().selectOne("flightinformation.getAirport", IATA);
 	}
 
 	public void updatePlusOneAtQueriedNumber(String IATA) {
 	}
-
+	
 	public List<Airport> getAirports4Map(double topLeftLat, double topLeftLong,
 			double botRightLat, double botRightLong, int MaximumCitiesNumber) {
 		// TODO Auto-generatded method stub
