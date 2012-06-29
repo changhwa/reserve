@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.narratage.reserve.flightinformation.domain.AirlineSchedule;
 
-public class AirlineScheduleDaoMybatis implements AirlineScheduleDao {
+public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 
 	public List<AirlineSchedule> getFromAirportAirlineScheduleList(String fromAirpotIATA, Date startArriveDate,
 			Date endArriveDate) {
@@ -24,6 +24,5 @@ public class AirlineScheduleDaoMybatis implements AirlineScheduleDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

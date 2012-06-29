@@ -18,38 +18,38 @@ public interface AirlineScheduleDao {
 	 * 
 	 * @param fromAirpotIATA
 	 *            출발공항
-	 * @param fromArriveTime
+	 * @param startArriveDate
 	 *            도착기준 시작시간
-	 * @param toArriveTime
+	 * @param endArriveDate
 	 *            도착기준 종료시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getFromAirportAirlineScheduleList(String fromAirpotIATA, Date fromArriveTime,
-			Date toArriveTime);
+	public List<AirlineSchedule> getFromAirportAirlineScheduleList(String fromAirpotIATA, Date startArriveDate,
+			Date endArriveDate);
 
 	/**
 	 * 도착지 공항으로 올 수 있는 모든 스케쥴중 도착기준 시간 안에 있는 정보를 가져옵니다.
 	 * 
 	 * @param toAirportIATA
 	 *            도착공항
-	 * @param fromArriveTime
+	 * @param startArriveDate
 	 *            도착기준 시작시간
-	 * @param toArriveTime
+	 * @param endArriveDate
 	 *            도착기준 종료시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getToAirportAirlineScheduleList(String toAirportIATA, Date fromArriveTime,
-			Date toArriveTime);
+	public List<AirlineSchedule> getToAirportAirlineScheduleList(String toAirportIATA, Date startArriveDate,
+			Date endArriveDate);
 
 	/**
 	 * 출발지 공항과 도착지 공항, 도착기준 시간안을 만족하는 모든 스케쥴을 반환합니다.
 	 * 
 	 * @param fromAirportIATA
 	 * @param toAirportIATA
-	 * @param fromArriveTime
-	 * @param toArriveTime
+	 * @param startArriveDate
+	 * @param endArriveDate
 	 * @return
 	 */
-	public List<AirlineSchedule> getFromAirportToAirportAirlineScheduleList(String fromAirportIATA,
-			String toAirportIATA, Date fromArriveTime, Date toArriveTime);
+	public List<AirlineSchedule> getDirectAirlineScheduleList(String fromAirportIATA, String toAirportIATA,
+			Date startArriveDate, Date endArriveDate);
 }

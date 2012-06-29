@@ -2,21 +2,23 @@ package com.narratage.reserve.flightinformation.service;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.narratage.reserve.flightinformation.dao.AirportDao;
 import com.narratage.reserve.flightinformation.dao.AirportDistanceDao;
 import com.narratage.reserve.flightinformation.domain.Airport;
 
-@Service("airportDistanceService")
 public class AirportDistanceServiceImpl implements AirportDistanceService {
 	private final static int NOT_EXIST_AIRPORT_DISTANCE = -999;
 
-	@Autowired
-	AirportDistanceDao airportDistanceDao;
-	@Autowired
-	AirportDao airportDao;
+	private AirportDistanceDao airportDistanceDao;
+	private AirportDao airportDao;
+
+	public void setAirportDistanceDao(AirportDistanceDao airportDistanceDao) {
+		this.airportDistanceDao = airportDistanceDao;
+	}
+
+	public void setAirportDao(AirportDao airportDao) {
+		this.airportDao = airportDao;
+	}
 
 	public double getAirportDistance(String IATA01, String IATA02) {
 		// 검색이 제대로 되지 않았을 경우를 대비하여 트랜잭션을 걸어주는게 옳바른 방법인가에 대한 고찰
