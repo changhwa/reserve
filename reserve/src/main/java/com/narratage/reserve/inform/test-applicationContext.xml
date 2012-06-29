@@ -18,14 +18,14 @@
 	</bean>
 
 	<!-- application components -->
-	<bean id="airportDao" class="com.dcinside.inform.dao.AirportDaoJdbc">
+	<bean id="airportDao" class="com.narratage.reserve.inform.dao.AirportDaoJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="airportDistanceDao" class="com.dcinside.inform.dao.AirportDistanceDaoJdbc">
+	<bean id="airportDistanceDao" class="com.narratage.reserve.inform.dao.AirportDistanceDaoJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="airportDistanceService" class="com.dcinside.inform.service.AirportDistanceServiceImpl">
+	<bean id="airportDistanceService" class="com.narratage.reserve.inform.service.AirportDistanceServiceImpl">
 		<property name="airportDao" ref="airportDao" />
 		<property name="airportDistanceDao" ref="airportDistanceDao" />
 	</bean>

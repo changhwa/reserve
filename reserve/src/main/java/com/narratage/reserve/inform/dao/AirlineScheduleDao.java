@@ -1,9 +1,9 @@
-package com.narratage.reserve.flightinformation.dao;
+package com.narratage.reserve.inform.dao;
 
 import java.util.Date;
 import java.util.List;
 
-import com.narratage.reserve.flightinformation.domain.AirlineSchedule;
+import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 /**
  * 항공운항정보를 가져오거나 입력합니다.

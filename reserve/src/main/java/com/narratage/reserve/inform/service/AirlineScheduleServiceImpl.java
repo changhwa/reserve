@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.service;
+package com.narratage.reserve.inform.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.narratage.reserve.flightinformation.dao.AirlineScheduleDao;
-import com.narratage.reserve.flightinformation.domain.AirlineSchedule;
+import com.narratage.reserve.inform.dao.AirlineScheduleDao;
+import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 public class AirlineScheduleServiceImpl implements AirlineScheduleService {
 

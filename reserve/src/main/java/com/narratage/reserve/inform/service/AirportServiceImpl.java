@@ -1,8 +1,8 @@
-package com.narratage.reserve.flightinformation.service;
+package com.narratage.reserve.inform.service;
 
 import java.util.List;
 
-import com.narratage.reserve.flightinformation.domain.Airport;
+import com.narratage.reserve.inform.domain.Airport;
 
 public class AirportServiceImpl implements AirportService {
 

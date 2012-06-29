@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.dao;
+package com.narratage.reserve.inform.dao;
 
 public interface AirportDistanceDao{
 	public double getDistance(String IATA01, String IATA02);

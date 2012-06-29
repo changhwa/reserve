@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.narratage.reserve.flightinformation.dao.AirportDao;
+import com.narratage.reserve.inform.dao.AirportDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/flightinformation/test-applicationContext.xml")
+@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
 public class AirportDaoJdbcTest {
 
 	@Autowired

@@ -1,8 +1,8 @@
-package com.narratage.reserve.flightinformation.dao;
+package com.narratage.reserve.inform.dao;
 
 import java.util.List;
 
-import com.narratage.reserve.flightinformation.domain.Airport;
+import com.narratage.reserve.inform.domain.Airport;
 
 public class AirportDaoMybatis implements AirportDao {
 

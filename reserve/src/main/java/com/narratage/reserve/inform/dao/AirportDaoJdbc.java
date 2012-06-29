@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.dao;
+package com.narratage.reserve.inform.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.narratage.reserve.flightinformation.domain.Airport;
+import com.narratage.reserve.inform.domain.Airport;
 
 public class AirportDaoJdbc implements AirportDao {
 	private JdbcTemplate jdbcTemplate;

@@ -1,10 +1,10 @@
-package com.narratage.reserve.flightinformation.service;
+package com.narratage.reserve.inform.service;
 
 import java.util.Arrays;
 
-import com.narratage.reserve.flightinformation.dao.AirportDao;
-import com.narratage.reserve.flightinformation.dao.AirportDistanceDao;
-import com.narratage.reserve.flightinformation.domain.Airport;
+import com.narratage.reserve.inform.dao.AirportDao;
+import com.narratage.reserve.inform.dao.AirportDistanceDao;
+import com.narratage.reserve.inform.domain.Airport;
 
 public class AirportDistanceServiceImpl implements AirportDistanceService {
 	private final static int NOT_EXIST_AIRPORT_DISTANCE = -999;

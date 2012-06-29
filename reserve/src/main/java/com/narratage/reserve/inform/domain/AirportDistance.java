@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.domain;
+package com.narratage.reserve.inform.domain;
 
 public class AirportDistance {
 	private String firstAirport;

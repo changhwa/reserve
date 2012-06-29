@@ -1,8 +1,8 @@
-package com.narratage.reserve.flightinformation.service;
+package com.narratage.reserve.inform.service;
 
 import java.util.List;
 
-import com.narratage.reserve.flightinformation.domain.Airport;
+import com.narratage.reserve.inform.domain.Airport;
 
 /**
  * 구글맵에서 표시될 도시를 가져오기 위해서 사용합니다. 동시에 DB에 저장된 모든 도시를 가져오는 경우 가독성이 떨어지며, DB에 지나친

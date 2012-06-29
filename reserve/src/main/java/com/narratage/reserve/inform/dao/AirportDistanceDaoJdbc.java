@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.dao;
+package com.narratage.reserve.inform.dao;
 
 import javax.sql.DataSource;
 

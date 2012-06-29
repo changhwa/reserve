@@ -1,4 +1,4 @@
-package com.narratage.reserve.flightinformation.service;
+package com.narratage.reserve.inform.service;
 
 /**
  * 거리를 구하는 서비스
