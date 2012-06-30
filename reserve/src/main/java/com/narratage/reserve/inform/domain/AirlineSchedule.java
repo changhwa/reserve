@@ -3,10 +3,10 @@ package com.narratage.reserve.inform.domain;
 import java.util.Date;
 
 public class AirlineSchedule {
-	private String fromIATA;
-	private String toIATA;
-	private Date takeOffTime;
-	private int durationMinute;
+	private String takeOffAirport;
+	private String landingAirport;
+	private Date takeOffDate;
+	private Date landingDate;
 	private String aircraft;
 	private int price;
 
@@ -14,47 +14,47 @@ public class AirlineSchedule {
 		super();
 	}
 
-	public AirlineSchedule(String fromIATA, String toIATA, Date takeOffTime, int durationMinute, String aircraft,
-			int price) {
+	public AirlineSchedule(String takeOffAirport, String landingAirport, Date takeOffDate, Date landingDate,
+			String aircraft, int price) {
 		super();
-		this.fromIATA = fromIATA;
-		this.toIATA = toIATA;
-		this.takeOffTime = takeOffTime;
-		this.durationMinute = durationMinute;
+		this.takeOffAirport = takeOffAirport;
+		this.landingAirport = landingAirport;
+		this.takeOffDate = takeOffDate;
+		this.landingDate = landingDate;
 		this.aircraft = aircraft;
 		this.price = price;
 	}
 
-	public String getFromIATA() {
-		return fromIATA;
+	public String getTakeOffAirport() {
+		return takeOffAirport;
 	}
 
-	public void setFromIATA(String fromIATA) {
-		this.fromIATA = fromIATA;
+	public void setTakeOffAirport(String takeOffAirport) {
+		this.takeOffAirport = takeOffAirport;
 	}
 
-	public String getToIATA() {
-		return toIATA;
+	public String getLandingAirport() {
+		return landingAirport;
 	}
 
-	public void setToIATA(String toIATA) {
-		this.toIATA = toIATA;
+	public void setLandingAirport(String landingAirport) {
+		this.landingAirport = landingAirport;
 	}
 
-	public Date getTakeOffTime() {
-		return takeOffTime;
+	public Date getTakeOffDate() {
+		return takeOffDate;
 	}
 
-	public void setTakeOffTime(Date takeOffTime) {
-		this.takeOffTime = takeOffTime;
+	public void setTakeOffDate(Date takeOffDate) {
+		this.takeOffDate = takeOffDate;
 	}
 
-	public int getDurationMinute() {
-		return durationMinute;
+	public Date getLandingDate() {
+		return landingDate;
 	}
 
-	public void setDurationMinute(int durationMinute) {
-		this.durationMinute = durationMinute;
+	public void setLandingDate(Date landingDate) {
+		this.landingDate = landingDate;
 	}
 
 	public String getAircraft() {
@@ -72,4 +72,5 @@ public class AirlineSchedule {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 }

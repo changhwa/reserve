@@ -1,14 +1,13 @@
 package com.narratage.reserve.inform.domain;
 
 public class Airport {
-	private int airportNo;
 	private String iata;
 	private String city;
 	private String contry;
 	private Double latitude;
 	private Double longtitude;
 	private float altitude;
-	private float timezosne;
+	private float timezone;
 	private String dst;
 	private int queriedNumber;
 
@@ -16,13 +15,21 @@ public class Airport {
 		super();
 	}
 
-	public int getAirportNo() {
-		return airportNo;
+	
+	public Airport(String iata, String city, String contry, Double latitude, Double longtitude, float altitude,
+			float timezone, String dst, int queriedNumber) {
+		super();
+		this.iata = iata;
+		this.city = city;
+		this.contry = contry;
+		this.latitude = latitude;
+		this.longtitude = longtitude;
+		this.altitude = altitude;
+		this.timezone = timezone;
+		this.dst = dst;
+		this.queriedNumber = queriedNumber;
 	}
 
-	public void setAirportNo(int airportNo) {
-		this.airportNo = airportNo;
-	}
 
 	public String getIata() {
 		return iata;
@@ -72,12 +79,12 @@ public class Airport {
 		this.altitude = altitude;
 	}
 
-	public float getTimezosne() {
-		return timezosne;
+	public float getTimezone() {
+		return timezone;
 	}
 
-	public void setTimezosne(float timezosne) {
-		this.timezosne = timezosne;
+	public void setTimezone(float timezone) {
+		this.timezone = timezone;
 	}
 
 	public String getDst() {

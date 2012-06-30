@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
 import com.narratage.reserve.inform.domain.Airport;
+import com.narratage.reserve.inform.domain.AirportDistance;
 
 public class AirportDistanceServiceImpl implements AirportDistanceService {
 	private final static int NOT_EXIST_AIRPORT_DISTANCE = -999;
@@ -42,7 +43,7 @@ public class AirportDistanceServiceImpl implements AirportDistanceService {
 	private double getDistanceFromDB(String[] IATAs) {
 		// 가독성이 떨어지는 try catch 문장을 따로 처리하여 주자.
 		try {
-			return airportDistanceDao.getDistance(IATAs[0], IATAs[1]);
+			return airportDistanceDao.get(IATAs[0], IATAs[1]);
 			// 테스트를 통해 실제 어떠한 예외가 나오는지 확인해야함.
 		} catch (Exception e) {
 			return NOT_EXIST_AIRPORT_DISTANCE;
@@ -56,7 +57,7 @@ public class AirportDistanceServiceImpl implements AirportDistanceService {
 				Airports[1].getLatitude(), Airports[1].getLongtitude());
 		// 거리정보를 실제 DB에 저장한다. 중복되는 데이터를 없애기 위해 IATA코드를 알파벳순으로 정렬한 뒤 넣어준다.
 
-		airportDistanceDao.addDistance(IATAs[0], IATAs[1], distance);
+		airportDistanceDao.add(new AirportDistance(IATAs[0], IATAs[1], distance));
 		return distance;
 	}
 

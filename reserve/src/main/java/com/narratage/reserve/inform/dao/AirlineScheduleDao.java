@@ -3,6 +3,8 @@ package com.narratage.reserve.inform.dao;
 import java.util.Date;
 import java.util.List;
 
+import com.narratage.reserve.inform.datatype.ScheduleSearchAirportType;
+import com.narratage.reserve.inform.datatype.ScheduleSerchDateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 /**
@@ -14,42 +16,46 @@ import com.narratage.reserve.inform.domain.AirlineSchedule;
 public interface AirlineScheduleDao {
 
 	/**
-	 * 출발지 공항에서 갈 수 있는 모든 스케쥴중 도착기준 시간 안에 있는 정보를 가져옵니다.
+	 * 하나의 공항을 기준으로 하는 기준 시간 내 모든 운항정보 리스트를 가져옵니다.
 	 * 
-	 * @param fromAirpotIATA
-	 *            출발공항
-	 * @param startArriveDate
-	 *            도착기준 시작시간
-	 * @param endArriveDate
-	 *            도착기준 종료시간
+	 * @param airportType
+	 *            이륙공항 착륙공항 기준 선택
+	 * @param dateType
+	 *            이륙시간 착륙시간 기준 선택
+	 * @param airportIATA
+	 *            기준공항
+	 * @param beginDate
+	 *            기준 시작 시간
+	 * @param endDate
+	 *            기준 종료 시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getFromAirportAirlineScheduleList(String fromAirpotIATA, Date startArriveDate,
-			Date endArriveDate);
+	public List<AirlineSchedule> getSingleAirportAirlineScheduleList(ScheduleSearchAirportType airportType,
+			ScheduleSerchDateType dateType, String airportIATA, Date beginDate, Date endDate);
 
 	/**
-	 * 도착지 공항으로 올 수 있는 모든 스케쥴중 도착기준 시간 안에 있는 정보를 가져옵니다.
+	 * 두개의 공항을 기준으로 하는 기준 시간 내 모든 운항정보 리스트를 가져옵니다.
 	 * 
-	 * @param toAirportIATA
-	 *            도착공항
-	 * @param startArriveDate
-	 *            도착기준 시작시간
-	 * @param endArriveDate
-	 *            도착기준 종료시간
+	 * @param dateType
+	 *            이륙시간 착륙시간 기준 선택
+	 * @param takeOffAirport
+	 *            이륙 공항
+	 * @param landingAirport
+	 *            착륙공항
+	 * @param beginDate
+	 *            기준 시작시간
+	 * @param endDate
+	 *            기준 종료시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getToAirportAirlineScheduleList(String toAirportIATA, Date startArriveDate,
-			Date endArriveDate);
+	public List<AirlineSchedule> getDualAirportAirlineScheduleList(ScheduleSerchDateType dateType,
+			String takeOffAirport, String landingAirport, Date beginDate, Date endDate);
 
 	/**
-	 * 출발지 공항과 도착지 공항, 도착기준 시간안을 만족하는 모든 스케쥴을 반환합니다.
+	 * 항공스케줄 추가
 	 * 
-	 * @param fromAirportIATA
-	 * @param toAirportIATA
-	 * @param startArriveDate
-	 * @param endArriveDate
-	 * @return
+	 * @param airlineSchedule
 	 */
-	public List<AirlineSchedule> getDirectAirlineScheduleList(String fromAirportIATA, String toAirportIATA,
-			Date startArriveDate, Date endArriveDate);
+	public void add(AirlineSchedule airlineSchedule);
+
 }

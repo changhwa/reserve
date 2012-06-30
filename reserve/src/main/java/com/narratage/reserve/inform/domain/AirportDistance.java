@@ -5,6 +5,17 @@ public class AirportDistance {
 	private String secondAirport;
 	private double distance;
 
+	public AirportDistance() {
+		super();
+	}
+
+	public AirportDistance(String firstAirport, String secondAirport, double distance) {
+		super();
+		this.firstAirport = firstAirport;
+		this.secondAirport = secondAirport;
+		this.distance = distance;
+	}
+
 	public String getFirstAirport() {
 		return firstAirport;
 	}

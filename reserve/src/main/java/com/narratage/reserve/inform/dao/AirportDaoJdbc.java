@@ -29,7 +29,7 @@ public class AirportDaoJdbc implements AirportDao {
 			airport.setLatitude(rs.getDouble("Latitude"));
 			airport.setLongtitude(rs.getDouble("Longtitude"));
 			airport.setQueriedNumber(rs.getInt("Queried_Number"));
-			airport.setTimezosne(rs.getFloat("Timezone"));
+			airport.setTimezone(rs.getFloat("Timezone"));
 			return airport;
 		}
 	};
@@ -40,13 +40,22 @@ public class AirportDaoJdbc implements AirportDao {
 	}
 
 	public void updatePlusOneAtQueriedNumber(String IATA) {
-		System.out.println("IATA : "+IATA);
+		System.out.println("IATA : " + IATA);
 		this.jdbcTemplate.update("UPDATE AIRPORT SET QUERIED_NUMBER=QUERIED_NUMBER+1");
 	}
 
 	public List<Airport> getAirports4Map(double topLeftLat, double topLeftLong, double botRightLat,
 			double botRightLong, int MaximumCitiesNumber) {
-		return null;
+		throw new RuntimeException("Not Yet Coded");
 	}
+
+	public void addAirport(Airport airport) {
+		this.jdbcTemplate.update(
+				"INSERT INTO AIRPORT(IATA,City,Contry,Latitude,Longtitude,Altitude,Timezone,DST,Queried_number)"
+						+ " VALUES(?,?,?,?,?,?,?,?,?)", airport.getIata(), airport.getCity(), airport.getContry(),
+				airport.getLatitude(), airport.getLongtitude(), airport.getAltitude(), airport.getTimezone(),
+				airport.getDst(), airport.getQueriedNumber());
+	}
+
 
 }

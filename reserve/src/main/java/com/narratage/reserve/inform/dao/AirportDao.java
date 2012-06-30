@@ -6,6 +6,7 @@ import com.narratage.reserve.inform.domain.Airport;
 
 /**
  * 공항정보를 가져오는 DAO클래스
+ * 
  * @author StevePak
  **/
 
@@ -40,4 +41,13 @@ public interface AirportDao {
 	 */
 	public List<Airport> getAirports4Map(double topLeftLat, double topLeftLong, double botRightLat,
 			double botRightLong, int MaximumCitiesNumber);
+
+	/**
+	 * 테스트를 위한 공항정보 추가
+	 * 
+	 * @param airport
+	 *            공항정보
+	 */
+	public void addAirport(Airport airport);
+
 }
