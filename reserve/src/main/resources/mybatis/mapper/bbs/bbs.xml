@@ -16,7 +16,7 @@
 
   <cache />
 
-	<resultMap type="BbsVO" id="bbs-info">
+	<resultMap type="BbsVo" id="bbs-info">
 		<id property="bbsId" column="bbs_id" />
 		<result property="title" column="title" />
 		<result property="insertDt" column="insert_dt" />
@@ -71,7 +71,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<select id="selectBbsDetail" parameterType="BbsVO" resultMap="bbs-info">
+	<select id="selectBbsDetail" parameterType="BbsVo" resultMap="bbs-info">
 	  	SELECT bbs_id,
 		title,
 		insert_dt,
@@ -100,7 +100,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<insert id="insertBbs" parameterType="BbsVO">
+	<insert id="insertBbs" parameterType="BbsVo">
 		INSERT INTO bbs (
 		bbs_id,
 		title,
@@ -145,7 +145,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<update id="updateBbs" parameterType="BbsVO">
+	<update id="updateBbs" parameterType="BbsVo">
 		UPDATE bbs
 		SET
 			title 				= #{title}
@@ -173,7 +173,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<delete id="deleteBbs" parameterType="BbsVO">
+	<delete id="deleteBbs" parameterType="BbsVo">
 		DELETE FROM bbs WHERE bbs_id = #{bbsId}
 	</delete>
 	
