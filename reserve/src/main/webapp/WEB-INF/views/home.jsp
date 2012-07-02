@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form name="test" action='/reserve/user/getUserInfo'  method="post">
+<form name="test" action='/reserve/user/getUserInfo'  method="get">
 	<input type="text" name="user_id" />
 	<br>
 	<input type="submit" value="submit">
