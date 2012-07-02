@@ -8,8 +8,16 @@
 
   <select id="duplicateUser" parameterType="String" resultType="int">
     SELECT count(*)
-    FROM users
-    WHERE id=#{id}
+    FROM member
+    WHERE user_id=#{user_id}
   </select>
+  
+  <select id="getUserInfo" parameterType="String" resultType="com.narratage.reserve.user.bean.UserBean">
+  	SELECT *
+  	FROM member
+  	WHERE user_id=#{user_id}
+  </select>
+  
+  
 
 </mapper>

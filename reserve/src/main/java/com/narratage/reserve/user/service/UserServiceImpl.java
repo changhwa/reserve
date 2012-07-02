@@ -14,34 +14,39 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao userDao;
 
-	public boolean duplicateUser(String id) {
-		int flag = userDao.duplicateUser(id);
-		if(flag ==0){
-			return false;
-		}
-		else{
+	public boolean duplicateUser(String user_id) {
+		int flag = userDao.duplicateUser(user_id);
+		if(flag == 0){
 			return true;
 		}
+		else{
+			return false;
+		}
 	}
 
-	public List<UserBean> selectAllUsers(UserBean user) {
+	public List<UserBean> getAllUsersInfo(String user_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public UserBean selectUser(UserBean user) {
+	public UserBean getUserInfo(String user_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUserInfo(user_id);
 	}
 
-	public int updateUser(String user_id, String password) {
+	public boolean updateUser(String user_id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteUser(String user_id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public int insertUser(UserBean userBean) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	public int deleteUser(String user_id, String password) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 }
