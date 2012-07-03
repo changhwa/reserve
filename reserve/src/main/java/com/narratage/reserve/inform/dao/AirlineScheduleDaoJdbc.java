@@ -2,6 +2,8 @@ package com.narratage.reserve.inform.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.narratage.reserve.inform.datatype.ScheduleSearchAirportType;
-import com.narratage.reserve.inform.datatype.ScheduleSerchDateType;
+import com.narratage.reserve.inform.datatype.ScheduleSearchDateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
@@ -23,31 +25,31 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 	}
 
 	private RowMapper<AirlineSchedule> airlineScheduleMapper = new RowMapper<AirlineSchedule>() {
-
 		public AirlineSchedule mapRow(ResultSet rs, int rowNum) throws SQLException {
 			AirlineSchedule airlineSchedule = new AirlineSchedule();
+			airlineSchedule.setAirlineScheduleNo(rs.getInt("airline_schedule_no"));
 			airlineSchedule.setTakeOffAirport(rs.getString("take_off_airport"));
 			airlineSchedule.setLandingAirport(rs.getString("landing_airport"));
-			airlineSchedule.setTakeOffDate(rs.getDate("take_off_time"));
-			airlineSchedule.setLandingDate(rs.getDate("landing_time"));
+			airlineSchedule.setTakeOffDate(rs.getTimestamp("take_off_date"));
+			airlineSchedule.setLandingDate(rs.getTimestamp("landing_date"));
 			airlineSchedule.setAircraft(rs.getString("aircraft"));
 			airlineSchedule.setPrice(rs.getInt("price"));
 
-			return null;
+			return airlineSchedule;
 		}
 	};
 
-	public List<AirlineSchedule> getSingleAirportAirlineScheduleList(ScheduleSearchAirportType airportType,
-			ScheduleSerchDateType dateType, String airportIATA, Date beginDate, Date endDate) {
+	public List<AirlineSchedule> get(ScheduleSearchAirportType airportType, ScheduleSearchDateType dateType,
+			String airportIATA, Date beginDate, Date endDate) {
 		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE " + airportType.getSqlColName() + "=? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
 		return this.jdbcTemplate.query(sql, new Object[] { airportIATA, beginDate, endDate },
 				this.airlineScheduleMapper);
 	}
 
-	public List<AirlineSchedule> getDualAirportAirlineScheduleList(ScheduleSerchDateType dateType,
-			String takeOffAirport, String landingAirport, Date beginDate, Date endDate) {
-		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE take_off_airport = ? AND landing_airport = ? "
+	public List<AirlineSchedule> get(ScheduleSearchDateType dateType, String takeOffAirport, String landingAirport,
+			Date beginDate, Date endDate) {
+		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE take_off_airport = ? AND landing_airport = ? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
 		return this.jdbcTemplate.query(sql, new Object[] { takeOffAirport, landingAirport, beginDate, endDate },
 				this.airlineScheduleMapper);

@@ -27,10 +27,15 @@
 	<bean id="commonDao" class="com.narratage.reserve.inform.dao.CommonDaoJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
-	<bean id="airportDistanceService" class="com.narratage.reserve.inform.service.AirportDistanceServiceImpl">
+
+	<bean id="airlineScheduleDao" class="com.narratage.reserve.inform.dao.AirlineScheduleDaoJdbc">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="airportDistanceService"
+		class="com.narratage.reserve.inform.service.AirportDistanceServiceImpl">
 		<property name="airportDao" ref="airportDao" />
 		<property name="airportDistanceDao" ref="airportDistanceDao" />
 	</bean>
-	
+
 </beans>

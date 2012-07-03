@@ -3,6 +3,7 @@ package com.narratage.reserve.inform.domain;
 import java.util.Date;
 
 public class AirlineSchedule {
+	private int airlineScheduleNo;
 	private String takeOffAirport;
 	private String landingAirport;
 	private Date takeOffDate;
@@ -23,6 +24,14 @@ public class AirlineSchedule {
 		this.landingDate = landingDate;
 		this.aircraft = aircraft;
 		this.price = price;
+	}
+
+	public int getAirlineScheduleNo() {
+		return airlineScheduleNo;
+	}
+
+	public void setAirlineScheduleNo(int airlineScheduleNo) {
+		this.airlineScheduleNo = airlineScheduleNo;
 	}
 
 	public String getTakeOffAirport() {
@@ -71,6 +80,13 @@ public class AirlineSchedule {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo + ", takeOffAirport=" + takeOffAirport
+				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + takeOffDate + ", landingDate="
+				+ landingDate + ", aircraft=" + aircraft + ", price=" + price + "]";
 	}
 
 }

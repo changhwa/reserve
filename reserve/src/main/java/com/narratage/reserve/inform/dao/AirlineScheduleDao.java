@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.narratage.reserve.inform.datatype.ScheduleSearchAirportType;
-import com.narratage.reserve.inform.datatype.ScheduleSerchDateType;
+import com.narratage.reserve.inform.datatype.ScheduleSearchDateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 /**
@@ -30,8 +30,8 @@ public interface AirlineScheduleDao {
 	 *            기준 종료 시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getSingleAirportAirlineScheduleList(ScheduleSearchAirportType airportType,
-			ScheduleSerchDateType dateType, String airportIATA, Date beginDate, Date endDate);
+	public List<AirlineSchedule> get(ScheduleSearchAirportType airportType,
+			ScheduleSearchDateType dateType, String airportIATA, Date beginDate, Date endDate);
 
 	/**
 	 * 두개의 공항을 기준으로 하는 기준 시간 내 모든 운항정보 리스트를 가져옵니다.
@@ -48,7 +48,7 @@ public interface AirlineScheduleDao {
 	 *            기준 종료시간
 	 * @return
 	 */
-	public List<AirlineSchedule> getDualAirportAirlineScheduleList(ScheduleSerchDateType dateType,
+	public List<AirlineSchedule> get(ScheduleSearchDateType dateType,
 			String takeOffAirport, String landingAirport, Date beginDate, Date endDate);
 
 	/**

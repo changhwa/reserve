@@ -34,7 +34,7 @@ public class AirportDaoJdbc implements AirportDao {
 		}
 	};
 
-	public Airport getAirportInfo(String IATA) {
+	public Airport get(String IATA) {
 		return this.jdbcTemplate.queryForObject("select * from airport where IATA = ?", new Object[] { IATA },
 				this.airportMapper);
 	}
@@ -49,7 +49,7 @@ public class AirportDaoJdbc implements AirportDao {
 		throw new RuntimeException("Not Yet Coded");
 	}
 
-	public void addAirport(Airport airport) {
+	public void add(Airport airport) {
 		this.jdbcTemplate.update(
 				"INSERT INTO AIRPORT(IATA,City,Contry,Latitude,Longtitude,Altitude,Timezone,DST,Queried_number)"
 						+ " VALUES(?,?,?,?,?,?,?,?,?)", airport.getIata(), airport.getCity(), airport.getContry(),

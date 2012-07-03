@@ -52,7 +52,7 @@ public class AirportDistanceServiceImpl implements AirportDistanceService {
 
 	private double calcDistance(String[] IATAs) {
 		// DB에서 두 도시의 정보를 가져온다.
-		Airport[] Airports = new Airport[] { airportDao.getAirportInfo(IATAs[0]), airportDao.getAirportInfo(IATAs[1]) };
+		Airport[] Airports = new Airport[] { airportDao.get(IATAs[0]), airportDao.get(IATAs[1]) };
 		double distance = calcDistanceByGeolocation(Airports[0].getLatitude(), Airports[0].getLongtitude(),
 				Airports[1].getLatitude(), Airports[1].getLongtitude());
 		// 거리정보를 실제 DB에 저장한다. 중복되는 데이터를 없애기 위해 IATA코드를 알파벳순으로 정렬한 뒤 넣어준다.

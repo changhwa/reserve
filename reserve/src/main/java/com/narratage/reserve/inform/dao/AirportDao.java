@@ -16,7 +16,7 @@ public interface AirportDao {
 	 *            공항코드
 	 * @return 공항정보
 	 */
-	public Airport getAirportInfo(String IATA);
+	public Airport get(String IATA);
 
 	/**
 	 * 공항코드를 param값으로 받으면, 해당 공항의 검색횟수를 1씩 올립니다. 주요 곻항의 경우 조금더 자주 호출됩니다.
@@ -48,6 +48,6 @@ public interface AirportDao {
 	 * @param airport
 	 *            공항정보
 	 */
-	public void addAirport(Airport airport);
+	public void add(Airport airport);
 
 }

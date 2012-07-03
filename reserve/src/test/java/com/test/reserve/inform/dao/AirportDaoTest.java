@@ -36,9 +36,9 @@ public class AirportDaoTest {
 	@Test
 	public void countAndDelete() {
 		commonDao.deleteAll("airport");
-		airportDao.addAirport(airports[0]);
+		airportDao.add(airports[0]);
 		simpleAirportCount(1);
-		airportDao.addAirport(airports[1]);
+		airportDao.add(airports[1]);
 		simpleAirportCount(2);
 		commonDao.deleteAll("airport");
 		simpleAirportCount(0);
@@ -47,9 +47,9 @@ public class AirportDaoTest {
 	@Test
 	public void getAirportInfo() {
 		commonDao.deleteAll("airport");
-		airportDao.addAirport(airports[0]);
-		airportDao.addAirport(airports[1]);
-		Airport getFromDaoAirport = airportDao.getAirportInfo(airports[0].getIata());
+		airportDao.add(airports[0]);
+		airportDao.add(airports[1]);
+		Airport getFromDaoAirport = airportDao.get(airports[0].getIata());
 		simpleAirportCompare(getFromDaoAirport, airports[0]);
 	}
 
