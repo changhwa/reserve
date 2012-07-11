@@ -18,8 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.dao.CommonDao;
-import com.narratage.reserve.inform.datatype.ScheduleSearchAirportType;
-import com.narratage.reserve.inform.datatype.ScheduleSearchDateType;
+import com.narratage.reserve.inform.datatype.SearchAirportType;
+import com.narratage.reserve.inform.datatype.SearchDateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 /**
@@ -62,7 +62,7 @@ public class AirlineScheduleDaoTest {
 		airlineScheduleDao.add(airlineSchedules[1]);
 		this.simpleCount(2);
 
-		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(ScheduleSearchDateType.LANDING_DATE,
+		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(SearchDateType.LANDING,
 				airlineSchedules[0].getTakeOffAirport(), airlineSchedules[0].getLandingAirport(), BASE_DATE1,
 				BASE_DATE3);
 		assertThat(airlineScheduleList.size(), is(1));
@@ -75,8 +75,8 @@ public class AirlineScheduleDaoTest {
 		for (int idx = 0; idx < airlineSchedules.length; idx++) {
 			airlineScheduleDao.add(airlineSchedules[idx]);
 		}
-		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(ScheduleSearchAirportType.TAKE_OFF_AIRPORT,
-				ScheduleSearchDateType.LANDING_DATE, "AAA", new Date(), BASE_DATE2);
+		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(SearchAirportType.TAKE_OFF,
+				SearchDateType.LANDING, "AAA", new Date(), BASE_DATE2);
 		for (int i = 0; i < airlineScheduleList.size(); i++) {
 			System.out.println(airlineScheduleList.get(i));
 		}

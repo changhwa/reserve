@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.narratage.reserve.inform.datatype.ScheduleSearchAirportType;
-import com.narratage.reserve.inform.datatype.ScheduleSearchDateType;
+import com.narratage.reserve.inform.datatype.SearchAirportType;
+import com.narratage.reserve.inform.datatype.SearchDateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
@@ -39,7 +39,7 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 		}
 	};
 
-	public List<AirlineSchedule> get(ScheduleSearchAirportType airportType, ScheduleSearchDateType dateType,
+	public List<AirlineSchedule> get(SearchAirportType airportType, SearchDateType dateType,
 			String airportIATA, Date beginDate, Date endDate) {
 		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE " + airportType.getSqlColName() + "=? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
@@ -47,7 +47,7 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 				this.airlineScheduleMapper);
 	}
 
-	public List<AirlineSchedule> get(ScheduleSearchDateType dateType, String takeOffAirport, String landingAirport,
+	public List<AirlineSchedule> get(SearchDateType dateType, String takeOffAirport, String landingAirport,
 			Date beginDate, Date endDate) {
 		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE take_off_airport = ? AND landing_airport = ? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";

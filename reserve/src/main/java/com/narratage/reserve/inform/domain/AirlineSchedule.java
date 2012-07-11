@@ -1,5 +1,6 @@
 package com.narratage.reserve.inform.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AirlineSchedule {
@@ -82,11 +83,14 @@ public class AirlineSchedule {
 		this.price = price;
 	}
 
+	// 날짜 테스트용
+	public static SimpleDateFormat SDF = new SimpleDateFormat("YYYY년MM월DD일 hh:mm:ss");
+
 	@Override
 	public String toString() {
 		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo + ", takeOffAirport=" + takeOffAirport
-				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + takeOffDate + ", landingDate="
-				+ landingDate + ", aircraft=" + aircraft + ", price=" + price + "]";
+				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + SDF.format(takeOffDate) + ", landingDate="
+				+ SDF.format(landingDate) + ", aircraft=" + aircraft + ", price=" + price + "]";
 	}
 
 }
