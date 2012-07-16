@@ -16,7 +16,6 @@ public class AirlineScheduleServiceImpl implements AirlineScheduleService {
 
 	// 36시간 이상 걸리는 경우는 무시한다
 	public static final long TRAVEL_LIMIT_DATE = 36 * 60 * 60 * 1000;
-
 	public static final long ONE_DAY = 24 * 60 * 60 * 1000;
 
 	private AirlineScheduleDao airlineScheduleDao;
@@ -29,19 +28,19 @@ public class AirlineScheduleServiceImpl implements AirlineScheduleService {
 			Date startArriveDate, Date endArriveDate) {
 		Table<String, String, AirlineSchedule> scheduleTable = new Table<String, String, AirlineSchedule>();
 
+		// ////////////////////////////////////////////////////
+		// 가능한 경로 가져오기/////////////////////////////
+		// ////////////////////////////////////////////////////
 		ArrayList<IataDateStorage> fromAirportList = new ArrayList<IataDateStorage>();
 		ArrayList<IataDateStorage> toAirportList = new ArrayList<IataDateStorage>();
 
 		ArrayList<AirlineSchedule> scheuleResultList = new ArrayList<AirlineSchedule>();
 
 		// 가장 처음 출발공항은 한개
-		fromAirportList
-				.add(new IataDateStorage(fromAirportIATA, new Date(endArriveDate.getTime() - TRAVEL_LIMIT_DATE)));
+		fromAirportList.add(new IataDateStorage(fromAirportIATA, new Date(endArriveDate.getTime() - TRAVEL_LIMIT_DATE)));
 		// 가장 처음 도착공항은 한개
 		toAirportList.add(new IataDateStorage(toAirportIATA, endArriveDate));
 
-		// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		List<AirlineSchedule> scheduleList = new ArrayList<AirlineSchedule>();
 		// 첫번째는 도착공항을 기준으로 값을 조회한다. 24시간 이내의 값만을 조회한다.
 		for (int i = 0; i <= fromAirportList.size(); i++) {
@@ -68,31 +67,8 @@ public class AirlineScheduleServiceImpl implements AirlineScheduleService {
 		}
 
 		// 완료되었으면 1번경유하는 루트를 찾도록 하자.
-
-		// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		return null;
 	}
-
-	/*
-	 * private class AdvancedAirlineSchedule { HashMap<String[],
-	 * List<AirlineSchedule>> coreScheduleList;
-	 * 
-	 * public AdvancedAirlineSchedule() { this.coreScheduleList = new
-	 * HashMap<String[], List<AirlineSchedule>>(); }
-	 * 
-	 * public void put(List<AirlineSchedule> scheduleList) { for
-	 * (AirlineSchedule schedule : scheduleList) { if (coreScheduleList.contain
-	 * sKey(new String[2] { schedule.getTakeOffAirport(),
-	 * schedule.getLandingAirport() })) {
-	 * 
-	 * } } }
-	 * 
-	 * public void get() { List<AirlineSchedule> tmpScheduleList =
-	 * airlineScheduleDao.get(ScheduleSearchAirportType.TAKE_OFF_AIRPORT,
-	 * ScheduleSearchDateType.TAKE_OFF_DATE, fromAirportIATA, new
-	 * Date(endArriveDate.getTime() - TRAVEL_LIMIT_HOUR), endArriveDate); } }
-	 */
 
 	private class IataDateStorage {
 		String iata;
@@ -108,16 +84,8 @@ public class AirlineScheduleServiceImpl implements AirlineScheduleService {
 			return iata;
 		}
 
-		public void setIata(String iata) {
-			this.iata = iata;
-		}
-
 		public Date getDate() {
 			return date;
-		}
-
-		public void setDate(Date date) {
-			this.date = date;
 		}
 
 	}

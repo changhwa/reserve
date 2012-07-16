@@ -38,4 +38,8 @@
 		<property name="airportDistanceDao" ref="airportDistanceDao" />
 	</bean>
 
+	<bean id="airlineService" class="com.narratage.reserve.inform.service.AirportServiceImpl">
+		<property name="airlineScheduleDao" ref="airlineScheduleDao" />
+	</bean>
+
 </beans>

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 기존의 HashMap은 하나의 key값을 통해서 하나의 value를 가져옵니다. 항공운항정보에서 출발공항의 값을 통해서, 도착공항의 값을
@@ -29,13 +29,13 @@ import java.util.Set;
  */
 public class Table<Row, Column, Value> {
 	private ArrayList<Value> coreDataList;
-	private HashMap<Row, HashSet<Integer>> rowIndexMap;
-	private HashMap<Column, HashSet<Integer>> columnIndexMap;
+	private HashMap<Row, TreeSet<Integer>> rowIndexMap;
+	private HashMap<Column, TreeSet<Integer>> columnIndexMap;
 
 	public Table() {
 		coreDataList = new ArrayList<Value>();
-		rowIndexMap = new HashMap<Row, HashSet<Integer>>();
-		columnIndexMap = new HashMap<Column, HashSet<Integer>>();
+		rowIndexMap = new HashMap<Row, TreeSet<Integer>>();
+		columnIndexMap = new HashMap<Column, TreeSet<Integer>>();
 	}
 
 	public int size() {
@@ -53,9 +53,9 @@ public class Table<Row, Column, Value> {
 		coreDataList.add(value);
 
 		if (rowIndexMap.containsKey(row) == false)
-			rowIndexMap.put(row, new HashSet<Integer>());
+			rowIndexMap.put(row, new TreeSet<Integer>());
 		if (columnIndexMap.containsKey(column) == false)
-			columnIndexMap.put(column, new HashSet<Integer>());
+			columnIndexMap.put(column, new TreeSet<Integer>());
 
 		rowIndexMap.get(row).add(coreDataList.size() - 1);
 		columnIndexMap.get(column).add(coreDataList.size() - 1);
@@ -90,21 +90,17 @@ public class Table<Row, Column, Value> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Value> get(Row row, Column column) {
-		Set<Integer> tmpRowSet = (Set<Integer>) rowIndexMap.get(row).clone();
+		TreeSet<Integer> tmpRowSet = (TreeSet<Integer>) rowIndexMap.get(row).clone();
 		tmpRowSet.retainAll(columnIndexMap.get(column));
 
 		return returnListGenerator(tmpRowSet);
 	}
 
-	private List<Value> returnListGenerator(Set<Integer> indexSet) {
-		Integer[] indexs = indexSet.toArray(new Integer[indexSet.size()]);
-		Arrays.sort(indexs);
-
-		List<Value> returnList = new ArrayList<Value>();
-
-		for (Integer index : indexs)
-			returnList.add(coreDataList.get(index));
-
-		return returnList;
+	private List<Value> returnListGenerator(TreeSet<Integer> indexSet) {
+		ArrayList<Value> list = new ArrayList<Value>();
+		for (Integer index : indexSet) {
+			list.add(coreDataList.get(index));
+		}
+		return list;
 	}
 }

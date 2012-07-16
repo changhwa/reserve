@@ -3,7 +3,7 @@ package com.narratage.reserve.inform.domain;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AirlineSchedule {
+public class AirlineSchedule implements Comparable<AirlineSchedule> {
 	private int airlineScheduleNo;
 	private String takeOffAirport;
 	private String landingAirport;
@@ -91,6 +91,10 @@ public class AirlineSchedule {
 		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo + ", takeOffAirport=" + takeOffAirport
 				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + SDF.format(takeOffDate) + ", landingDate="
 				+ SDF.format(landingDate) + ", aircraft=" + aircraft + ", price=" + price + "]";
+	}
+
+	public int compareTo(AirlineSchedule o) {
+		return this.takeOffDate.getTime() <= o.takeOffDate.getTime() ? 1 : -1;
 	}
 
 }
