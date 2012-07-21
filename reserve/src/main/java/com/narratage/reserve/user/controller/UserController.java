@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.narratage.reserve.user.bean.UserBean;
 import com.narratage.reserve.user.service.UserService;
 
 @Controller
@@ -20,7 +21,7 @@ public class UserController {
 		
 		System.out.println("test:::");
 		
-		String id = request.getParameter("userId");
+		String id = request.getParameter("user_id");
 		
 		if(userService.duplicateUser(id)){
 			System.out.println("Ok");
@@ -30,5 +31,20 @@ public class UserController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/user/getUserInfo")
+	public String getUserInfo(HttpServletRequest request) {
+		String user_id = request.getParameter("user_id");
+		
+		if (userService.getUserInfo(user_id) != null) {
+			System.out.println(user_id + " you choosed");
+		}
+		
+		return "home";
+	}
+	
+	
+	
+	
 
 }
