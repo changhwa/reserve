@@ -19,7 +19,7 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao{
 
 	public UserBean getUserInfo(String user_id) {
 		// TODO Auto-generated method stub
-		return (UserBean) getSqlSession().selectOne("com.narratage.reserve.user.dao.UserDao", user_id);
+		return (UserBean) getSqlSession().selectOne("com.narratage.reserve.user.dao.UserDao.getUserInfo", user_id);
 	}
 
 }

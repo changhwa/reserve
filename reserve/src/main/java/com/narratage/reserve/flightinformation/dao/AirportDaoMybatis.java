@@ -16,7 +16,8 @@ public class AirportDaoMybatis extends SqlSessionDaoSupport implements
 	private SqlSessionFactory sqlSessionFactory;
 
 	public Airport getAirportInfo(String IATA) {
-		return (Airport) getSqlSession().selectOne("flightinformation.getAirport", IATA);
+		//return (Airport) getSqlSession().selectOne("flightinformation.getAirport", IATA);
+		return null;
 	}
 
 	public void updatePlusOneAtQueriedNumber(String IATA) {

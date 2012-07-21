@@ -5,33 +5,5 @@
 <mapper namespace="flightInformation">
 
 	<cache />
-	<resultMap type="com.narratage.reserve.flightinformation.domain.Airport"
-		id="airport">
-		<result property="airportNo" column="Airport_no" />
-		<result property="iata" column="IATA" />
-		<result property="city" column="City" />
-		<result property="contry" column="Contry" />
-		<result property="latitude" column="Latitude" />
-		<result property="longtitude" column="Longtitude" />
-		<result property="alititude" column="Altitude" />
-		<result property="timezone" column="Timezone" />
-		<result property="dst" column="DST" />
-		<result property="queriedNumber" column="Queried_number" />
-	</resultMap>
-
-	<select id="getAirportInfo" parameterType="String" parameterMap="airport">
-		SELECT Airport_no
-		,IATA
-		,City
-		,Contry
-		,Latitude
-		,Longtitude
-		,Altitude
-		,Timezone
-		,DST
-		,Queried_number
-		FROM Airport
-		WHERE IATA=#{IATA}
-	</select>
 
 </mapper>
