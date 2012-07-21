@@ -9,7 +9,7 @@
 	src="/reserve/resources/_Shared/js/lib/jquery-1.7.2.js"></script>
 <script type="text/javascript"
 	src="/reserve/resources/_Shared/js/util/stringUtil.js"></script>
-<link href="/reserve/resources/css/reserve/seat.css" rel="stylesheet"
+<link href="/reserve/resources/css/reserve/seat.css"user_id rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript">
 	
