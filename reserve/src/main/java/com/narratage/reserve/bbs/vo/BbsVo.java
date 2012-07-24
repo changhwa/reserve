@@ -118,8 +118,9 @@ public class BbsVo {
 	}
 	  
 	
-	  
-	  
+	
+	
+	
 	  
 	
 }

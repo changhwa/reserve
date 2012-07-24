@@ -26,7 +26,7 @@ public class BbsDaoImpl extends SqlSessionDaoSupport implements BbsDao {
 		return null;
 	}
 	public int insertBbs(BbsVo BbsVo) {
-		return 1;
+		return (int) getSqlSession().insert("com.narratage.reserve.bbs.dao.BbsDao.insertBbs", BbsVo);	
 	}
 	public int updateBbs(Integer bbsId) {
 		return 1;

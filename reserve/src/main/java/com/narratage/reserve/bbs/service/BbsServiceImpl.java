@@ -25,7 +25,7 @@ public class BbsServiceImpl implements BbsService {
 	 }
 
 	 public int insertBbs(BbsVo BbsVo) {
-		 return 1;
+		 return bbsDao.insertBbs(BbsVo);
 	 }
 	 public int updateBbs(Integer bbsId) {
 		 return 1;
