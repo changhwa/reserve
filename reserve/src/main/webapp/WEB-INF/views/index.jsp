@@ -16,6 +16,7 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="/reserve/resources/_Shared/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/reserve/resources/css/jqueryui/jquery-ui-1.8.22.custom.css">
   <style>
   body {
     padding-top: 60px;
@@ -52,52 +53,98 @@
       </div>
     </div>
 
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="row" style="">
+            <div class="row-fluid">
+              <div class="span1"></div>
+              <div class="span5">
+                <div class="control-group">
+                  <label for="adultNum" class="control-label">&nbsp;어른</label>
+                    <span class="controls">
+                      <select name="" id="adultNum" class="input-small">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                    </span>
+                  
+                </div>
+              </div>
+              <div class="span6">
+                <div class="control-group">
+                  <label for="childNum" class="control-label">&nbsp;어린이</label>
+                    <span class="controls">
+                      <select name="" id="childNum" class="input-small">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                    </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span11">
+                  <div id="date">
+                    <label for="startDate">출발일</label>
+                    <div id="date">
+                      <input type="text" id="startDate" name="startDate" onclick="aaa()" />
+                    </div>
+                    <script>
+                      function aaa(){
+                        $("#startDate").datepicker();  
+                      }
+                    </script>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12" ></div>
+          </div>
         </div>
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span6" style="background-color:blue">
+          <!--Body content-->
+        </div>
+        <div class="span3">
+        
         </div>
       </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2012</p>
-      </footer>
-
     </div> <!-- /container -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/reserve/resources/_Shared//js/lib/jquery-1.7.2.js"><\/script>')</script>
+<script src="/reserve/resources/_Shared/js/lib/jquery-1.7.2.js"></script>
 <script src="/reserve/resources/_Shared/bootstrap/js/libs/bootstrap/bootstrap.min.js"></script>
 <script src="/reserve/resources/_Shared/bootstrap/js/plugins.js"></script>
 <script src="/reserve/resources/_Shared/bootstrap/js/script.js"></script>
+<script src="http://code.jquery.com/ui/1.8.22/jquery-ui.min.js" type="text/javascript"></script>
 <script>
   var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
+
 
 </body>
 </html>
