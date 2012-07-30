@@ -10,3 +10,5 @@ reserve/target/test-classes/log4j.xml
 reserve/src/main/resources/properties/mysql.properties
 reserve/reserve.sublime-project
 reserve/reserve.sublime-workspace
+reserve/.tags
+reserve/.tags_sorted_by_file
