@@ -16,8 +16,8 @@ public class BbsServiceImpl implements BbsService {
 	@Autowired
 	private BbsDao bbsDao;
 	
-	 public List<BbsVo> selectBbsList(BbsVo BbsVo) {
-		return null;
+	 public List<BbsVo> selectBbsList() {
+		 return bbsDao.selectBbsList();
 	 }
 	 
 	 public BbsVo selectBbsDetail(Integer bbsId)  {
