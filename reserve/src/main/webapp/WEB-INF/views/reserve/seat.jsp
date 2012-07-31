@@ -51,24 +51,25 @@
 		
 		var selectSeatNum="";
 		
-		if(selectNum<=personTotal){
-			if(seatId.hasClass("noReserveSeat")){
-				seatId.removeClass("noReserveSeat");
-				seatId.addClass("reserveSeat");
-				selectNum++;
-				selectSeatNum+=num+",";
-				returnVal  = findRemoveSeat(selectSeatNum,"");
-			}
-			else{
-				seatId.removeClass("reserveSeat");
-				seatId.addClass("noReserveSeat");
-				selectNum--;
-				returnVal  = findRemoveSeat(selectSeatNum,num);
-			}
+		if(selectNum<=personTotal && seatId.hasClass("noReserveSeat")){
+			seatId.removeClass("noReserveSeat");
+			seatId.addClass("reserveSeat");
+			selectNum++;
+			selectSeatNum+=num+",";
+			returnVal  = findRemoveSeat(selectSeatNum,"")
 		}
+
+		else if(seatId.hasClass("reserveSeat")){
+			seatId.removeClass("reserveSeat");
+			seatId.addClass("noReserveSeat");
+			selectNum--;
+			returnVal  = findRemoveSeat(selectSeatNum,num);
+		}
+		
 		else{
 			alert('선택인원을 초과하였습니다');
 		}
+		console.log('selectNum'+selectNum);
 		
 	}
 	
