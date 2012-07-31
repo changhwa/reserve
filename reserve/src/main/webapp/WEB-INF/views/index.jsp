@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -59,11 +60,11 @@
           <div class="row" style="">
             <div class="row-fluid">
               <div class="span1"></div>
-              <div class="span5">
-                <div class="control-group">
-                  <label for="adultNum" class="control-label">&nbsp;어른</label>
+              <div class="span11">
+                <div class="control-group" >
+                  <label for="adultNum" class="control-label">&nbsp;어른&nbsp;&nbsp;&nbsp;
                     <span class="controls">
-                      <select name="" id="adultNum" class="input-small">
+                      <select name="adultNum" id="adultNum" class="input-medium">
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -76,14 +77,10 @@
                         <option value="9">9</option>
                       </select>
                     </span>
-                  
-                </div>
-              </div>
-              <div class="span6">
-                <div class="control-group">
-                  <label for="childNum" class="control-label">&nbsp;어린이</label>
+                  </label>  
+                  <label for="childNum" class="control-label">&nbsp;어린이
                     <span class="controls">
-                      <select name="" id="childNum" class="input-small">
+                      <select name="childNum" id="childNum" class="input-medium">
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -96,6 +93,7 @@
                         <option value="9">9</option>
                       </select>
                     </span>
+                  </label>
                 </div>
               </div>
             </div>
@@ -106,9 +104,8 @@
                 <div class="span1"></div>
                 <div class="span11">
                   <div id="date">
-                    <label for="startDate">출발일</label>
                     <div id="date">
-                      <input type="text" id="startDate" name="startDate" onclick="aaa()" />
+                      <input type="text" id="startDate" name="startDate" onclick="aaa()" placeholder="출발일"/>
                     </div>
                     <script>
                       function aaa(){
@@ -118,15 +115,113 @@
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
           <div class="row">
-            <div class="span12" ></div>
+            <div class="span12" >
+              <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span7">
+                  <input type="text" class="input-medium search-query" placeholder="도시검색">
+                </div>
+                <div class="span1 offset1">
+                  <button class="btn" onclick="searchCity()">Search</button>
+                </div>
+              </div>             
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span11" id="showCity">
+                  <!-- 원래는 ajax에서 구현되어야 할 부분이나 없는관계로 임시로 만들어둠..-->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>공항</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>히드로공항</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>런던공항</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>취리히공항</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>개트윅공항</td>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="span6" style="background-color:blue">
-          <!--Body content-->
+        <div class="span6">
+          <div class="span12">
+            <div id="schedule">
+              <!--이부분 역시 ajax처리로 공항+날짜 정보에 따른 스케쥴표 출력 -->
+              <table class="table well">
+                <thead>
+                  <th>출발시간</th>
+                  <th>도착시간</th>
+                  <th>소요시간</th>
+                  <th>좌석수</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>07-30 09:00</td>
+                    <td>07-30 24:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>07-30 10:00</td>
+                    <td>07-31 01:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>07-31 09:00</td>
+                    <td>07-31 24:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>08-01 05:00</td>
+                    <td>08-01 20:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>08-01 07:00</td>
+                    <td>08-01 22:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>08-01 20:00</td>
+                    <td>08-02 11:00</td>
+                    <td>15/h</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="seatReserve">
+              <jsp:include page="/reserv/seat?airinformCode=1" />               
+            </div>
+          </div>
         </div>
         <div class="span3">
         
@@ -144,7 +239,10 @@
   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
+<script type="text/javascript">
+  
 
+</script>
 
 </body>
 </html>
