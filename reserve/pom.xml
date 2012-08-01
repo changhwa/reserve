@@ -180,6 +180,7 @@
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
+					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -7,8 +7,8 @@
 	-webkit-border-radius: 1px;
 	border-radius: 1px;
 	float: left;
-	margin-right: 1px;
-	margin-left: 1px;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .reserveSeat{
@@ -20,8 +20,8 @@
 	-webkit-border-radius: 1px;
 	border-radius: 1px;
 	float: left;
-	margin-right: 1px;
-	margin-left: 1px;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .blankSeat{
@@ -33,6 +33,6 @@
 	-webkit-border-radius: 1px;
 	border-radius: 1px;
 	float: left;
-	margin-right: 1px;
-	margin-left: 1px;
+	margin-right: 5px;
+	margin-left: 5px;
 }

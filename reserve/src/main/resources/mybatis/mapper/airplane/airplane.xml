@@ -8,8 +8,8 @@
 
   <select id="findSeat" parameterType="String" resultType="String">
   	SELECT seatValue
-  	FROM seat_inform A, airplane_inform B, airinform C
-  	WHERE C.airinformCode =#{airinformCode}
+  	FROM seat_inform A, airplane_inform B, airline_schedule C
+  	WHERE C.airline_schedule_no =#{airinformCode}
   	AND C.airplaneCode = B.airplaneCode
   	AND B.seatCode = A.seatCode   
   </select>
