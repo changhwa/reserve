@@ -17,7 +17,7 @@ function removeArray(array,num){
 
 	for(var i=0;i<array.length;i++){
 		if(num==array[i]){
-			array.splice(i,1);
+			//array.splice(i,1);
 		}else{
 			temp.push(array[i]);
 		}
