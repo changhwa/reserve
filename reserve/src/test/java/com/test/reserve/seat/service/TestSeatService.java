@@ -14,25 +14,63 @@ public class TestSeatService {
 	
 	String seatValue;
 	TestSeatService service;
-	
+	String[] temp;
+	ArrayList tempList = new ArrayList();
+	int[] selectNum={6,10,25};
+	String[] seatName={"A1","B10"};
 
 
 	@Before
 	public void setUp(){
 
 		seatValue="01010101013#00000000003#11111111113#11111111113#00000000003#0101010101";
-		//int[] selectSetNum={6,10,14};
-		//String[] reservedSeat={"A1","A2","C3","C5"};
+		temp = seatValue.split("#");
 		service = new TestSeatService();
+		
+		tempList.add("0");
+		tempList.add("A1");
+		tempList.add("0");
+		tempList.add("A2");
+		tempList.add("0");
+		tempList.add("A3");
+		tempList.add("0");
+		tempList.add("A4");
+		tempList.add("0");
+		tempList.add("A5");
+		tempList.add("3");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("0");
+		tempList.add("3");
+		tempList.add("B1");
+		tempList.add("B2");
+		tempList.add("B3");
+		tempList.add("B4");
+		tempList.add("B5");
+		tempList.add("B6");
+		tempList.add("B7");
+		tempList.add("B8");
+		tempList.add("B9");
+		tempList.add("B10");
+		tempList.add("3");
 	}
 	
+	@Test
+	public void splitSeatValue(){
+		assertThat(temp[0],is("01010101013"));		
+	}
 
 	@Test
 	public void makeSeatNameFromSeatArray() {
-		String[] temp = seatValue.split("#");
-		//assertThat(temp[0],is("01010101013"));
-		ArrayList list = new ArrayList();
-		int count=0;
+		
+		ArrayList<String> list = new ArrayList<String>();
 		int seatNum=1;
 		int yl=0;
 		boolean gongback = false;
@@ -58,9 +96,32 @@ public class TestSeatService {
 			seatNum=1;
 		}
 		assertThat((String)list.get(22), is("B1"));
-		
 	}
+	
+	
 
+	@Test
+	public void searchSeatName(){
+		
+		String tempIndex = seatName[1];
+		tempList.indexOf(tempIndex);
+		assertThat("31", is(tempList.indexOf(tempIndex)+""));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String firstChar(int i){
 		int howNum = i+65;
 		char c;
