@@ -60,6 +60,7 @@
 				seatId.addClass("reserveSeat");
 				selectNum++;
 				returnVal.push(num);
+				$("#testSeat",parent.document).val("aaaaa");
 				
 			}
 

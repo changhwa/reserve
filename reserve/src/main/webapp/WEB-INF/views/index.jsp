@@ -224,7 +224,9 @@
           </div>
         </div>
         <div class="span3">
-        
+          <div class="span12">
+            <input type="text" id="testSeat" value=""/>            
+          </div>        
         </div>
       </div>
     </div> <!-- /container -->
