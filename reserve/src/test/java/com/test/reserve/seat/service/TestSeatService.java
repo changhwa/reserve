@@ -1,4 +1,7 @@
 package com.test.reserve.seat.service;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -6,27 +9,41 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+
+import com.narratage.reserve.util.StringUtil;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:/mybatis/application-mybatis.xml")
 public class TestSeatService {
+
+	//given
 	
 	String seatValue;
 	TestSeatService service;
 	String[] temp;
+	char[] joinSeatValue;
 	ArrayList tempList = new ArrayList();
 	int[] selectNum={6,10,25};
 	String[] seatName={"A1","B10"};
-
+	String successSeat;
 
 	@Before
 	public void setUp(){
-
+		
+		//when
 		seatValue="01010101013#00000000003#11111111113#11111111113#00000000003#0101010101";
+		
+
 		temp = seatValue.split("#");
 		service = new TestSeatService();
+		joinSeatValue = StringUtil.arrayToString(temp).toCharArray();
 		
+
+		// post webpage
+		successSeat="02010101013000000000031111111112311111111113000000000030101010101";
+
+
+		// Then makeSeatNameFromSeatArray
 		tempList.add("0");
 		tempList.add("A1");
 		tempList.add("0");
@@ -108,7 +125,21 @@ public class TestSeatService {
 		assertThat("31", is(tempList.indexOf(tempIndex)+""));
 	}
 	
+
+	@Test
+	public void joinSeatValue(){
+		assertThat(joinSeatValue[0],is('0'));
+	}
+
+
+
 	
+	@Test
+	public void changedArrayIndex(){
+		joinSeatValue[1] = '2';
+		joinSeatValue[31] = '2';
+		assertThat(StringUtil.arrayToString(joinSeatValue),is(successSeat));
+	}
 	
 	
 	
