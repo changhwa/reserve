@@ -131,8 +131,6 @@ public class TestSeatService {
 		assertThat(joinSeatValue[0],is('0'));
 	}
 
-
-
 	
 	@Test
 	public void changedArrayIndex(){
@@ -140,18 +138,6 @@ public class TestSeatService {
 		joinSeatValue[31] = '2';
 		assertThat(StringUtil.arrayToString(joinSeatValue),is(successSeat));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public String firstChar(int i){
 		int howNum = i+65;
