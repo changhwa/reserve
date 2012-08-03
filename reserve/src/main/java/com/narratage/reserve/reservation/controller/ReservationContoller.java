@@ -1,5 +1,6 @@
 package com.narratage.reserve.reservation.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.narratage.reserve.airplane.service.SeatService;
 import com.narratage.reserve.reservation.service.ReservationService;
+import com.narratage.reserve.util.StringUtil;
 
 @Controller
 public class ReservationContoller {
@@ -30,10 +32,14 @@ public class ReservationContoller {
 	public String seatView(ModelMap model, HttpServletRequest req){
 		
 		String airinformCode = req.getParameter("airinformCode");
-		
 		String seat = seatService.findSeat(airinformCode);
-		
-		model.addAttribute("seatNum",seat.toCharArray());
+		String[] seatValueSplit = StringUtil.split(seat,"#");
+		char[] joinSeatValuetoArray = StringUtil.arrayToString(seatValueSplit).toCharArray();
+		ArrayList<String> seatNameList = seatService.makeSeatNameFromSeatArray(seatValueSplit);
+
+		joinSeatValuetoArray = seatService.viewReserved(joinSeatValuetoArray, seatNameList, airinformCode);		
+
+		model.addAttribute("seatNum",joinSeatValuetoArray);
 		
 		return "/reserve/seat";
 	}

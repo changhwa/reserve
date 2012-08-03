@@ -21,7 +21,103 @@ public class SeatServiceImpl implements SeatService {
 	private ReservationService reserveService;
 
 	
+	public String findSeat(String airinformCode){
+		String oriSeat = seatDao.findSeat(airinformCode);
+		return oriSeat;
+	}
+
+
+	public char[] viewReserved(char[] joinSeatValuetoArray, ArrayList<String> seatNameList, String airinformCode){
+		
+		ArrayList reserveSeatList = new ArrayList();
+		reserveSeatList = reserveService.findAirinformCodeReserve(airinformCode);
+		
+		for (int i=0;i<reserveSeatList.size();i++){
+
+			HashMap map = (HashMap) reserveSeatList.get(i);
+			String seatName = (String) map.get("seatName");
+			joinSeatValuetoArray = changedArrayIndex(Integer.parseInt(searchSeatIndex(seatNameList, seatName))
+				, joinSeatValuetoArray, '2');
+		}
+
+		return joinSeatValuetoArray;
+	}
+
+
+
+
+	public String ingReserve(String seatValue, ArrayList<String> seatNameList){
+
+		return null;
+	}
+
+
+
+	public ArrayList<String> makeSeatNameFromSeatArray(String[] seatValuetoArray) {
+		
+		ArrayList<String> list = new ArrayList<String>();
+		int seatNum=1;
+		int yl=0;
+		boolean gongback = false;
+		for(int i=0;i<seatValuetoArray.length;i++){
+			char[] ch = seatValuetoArray[i].toCharArray();
+			for(int j=0;j<ch.length;j++){				
+				if(ch[j]=='0'){
+					list.add("0");
+				}
+				else if(ch[j]=='1'){
+					list.add(firstChar(yl)+seatNum);
+					seatNum++;
+					gongback = true;
+				}
+				else{
+					list.add("3");
+				}
+				if(j==ch.length-1 && gongback){
+					++yl;
+				}
+			}
+			gongback = false;
+			seatNum=1;
+		}
+		
+		return list;
+	}
+
+	public static String firstChar(int i){
+		int howNum = i+65;
+		char c;
+		for(c=65 ; c<91 ; c++){
+			if(c==howNum){
+				break;
+			}
+			else{
+				continue;
+			}
+		}
+		return c+"";
+	}
 	
+	public static String searchSeatIndex(ArrayList<String> seatNameList, Object obj){
+		if(obj instanceof Integer){
+			return seatNameList.get(Integer.parseInt(obj.toString()));
+		}else{
+			return seatNameList.indexOf(obj.toString())+"";
+		}
+		
+	}
+
+
+	//StringUtil클래스로 옮길 예정 토요일 스터디시간에 작업
+	public static char[] changedArrayIndex(int i, char[] str, char replace){
+		str[i]=replace;
+		return str;
+	}
+
+
+	
+	
+	/*
 	public String findSeat(String airinformCode) {
 		ArrayList reserveSeatList = new ArrayList();
 		
@@ -78,6 +174,6 @@ public class SeatServiceImpl implements SeatService {
 			i++;
 		}
 		return i;
-	}
+	}*/
 	
 }
