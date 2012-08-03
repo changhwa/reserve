@@ -2,6 +2,7 @@ package com.narratage.reserve.airplane.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,24 @@ public class SeatServiceImpl implements SeatService {
 
 
 
-	public String ingReserve(String seatValue, ArrayList<String> seatNameList){
+	public String ingReserve(HashMap paramMap,ArrayList<String> seatNameList){
+
+		//syncronized?
+		String selectedSeat = (String) paramMap.get("seatNum");
+		String[] seatNum = StringUtil.split(selectedSeat,",");
+		ArrayList list = new ArrayList();
+
+
+		for(int i=0; i<seatNum.length; i++){
+			list.add(searchSeatIndex(seatNameList, seatNum[i]));
+		}
+
+		paramMap.put("seatNameList", list);
+		
+		reserveService.insertReserve(paramMap);
+
+
+
 
 		return null;
 	}
@@ -99,8 +117,8 @@ public class SeatServiceImpl implements SeatService {
 	}
 	
 	public static String searchSeatIndex(ArrayList<String> seatNameList, Object obj){
-		if(obj instanceof Integer){
-			return seatNameList.get(Integer.parseInt(obj.toString()));
+		if(Pattern.matches("^[0-9]*$", obj.toString())){
+			return seatNameList.get(Integer.parseInt(obj.toString())-1);
 		}else{
 			return seatNameList.indexOf(obj.toString())+"";
 		}

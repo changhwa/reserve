@@ -20,9 +20,9 @@ public class ReseravationDaoImpl extends SqlSessionDaoSupport implements Reserva
 		return (ArrayList) getSqlSession().selectList("com.narratage.reserve.reservation.dao.ReservationDao.findAirinformCodeReserve", airinformCode);
 	}
 
-	public int insertReserve(HashMap map) {
+	public Object insertReserve(HashMap map) {
 	
-		return (Integer) getSqlSession().insert("com.narratage.reserve.reservation.dao.ReservationDao.insertReserve",map);
+		return getSqlSession().insert("com.narratage.reserve.reservation.dao.ReservationDao.insertReserve",map);
 	}
 
 	public int deleteReserve(String reservationCode) {

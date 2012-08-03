@@ -12,4 +12,14 @@
   	WHERE airline_schedule_no =#{airinformCode}
   </select>
 
+  <insert id="insertReserve" parameterType="hashmap" useGeneratedKeys="true">
+  
+  	INSERT INTO reservation (airline_schedule_no,seatName,reservationDate, reservationFlag, user_id ) VALUES
+  	
+  	<foreach collection="seatNameList" item="seatName" separator=" ," >
+    	( #{airinformCode}, #{seatName}, #{date}, 0, #{userId} )
+    </foreach>
+
+  </insert>
+
 </mapper>

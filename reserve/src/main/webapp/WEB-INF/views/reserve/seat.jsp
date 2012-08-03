@@ -34,81 +34,68 @@
 		</c:forEach>
 
 	</div>
-	<div><button class="btn" onclick="reserveSubmit()">확인</button></div>
-<script type="text/javascript"
-	src="/reserve/resources/_Shared/js/lib/jquery-1.7.2.js"></script>
-<script type="text/javascript"
-	src="/reserve/resources/_Shared/js/util/stringUtil.js"></script>
-<script type="text/javascript">
-	
-	var selectNum = 1;
-	var returnVal=new Array();
-	
-	function selectedSeat(num){
+	<div><button class="btn" onclick="reserveSubmit()">확인 </button></div>
+
+	<input type="hidden" name="airinformCode" id="airinformCode" value="${param.airinformCode}" />
+
+	<script type="text/javascript"
+		src="/reserve/resources/_Shared/js/lib/jquery-1.7.2.js"></script>
+	<script type="text/javascript"
+		src="/reserve/resources/_Shared/js/util/stringUtil.js"></script>
+	<script type="text/javascript">
 		
-		var personTotal = parseInt($("#adultNum").val())+parseInt($("#childNum").val());
+		var selectNum = 1;
+		var returnVal=new Array();
 		
-		var seatId = $("#seatName"+num); 
-		
-		var selectSeatNum="";
-		
-		if(selectNum<=personTotal && seatId.hasClass("noReserveSeat")){
-			seatId.removeClass("noReserveSeat");
-			seatId.addClass("reserveSeat");
-			selectNum++;
-			returnVal.push(num);
+		function selectedSeat(num){
 			
-		}
-
-		else if(seatId.hasClass("reserveSeat")){
-			seatId.removeClass("reserveSeat");
-			seatId.addClass("noReserveSeat");
-			selectNum--;
-			returnVal = removeArray(returnVal, num);
-
-		}
-		
-		else{
-			alert('선택인원을 초과하였습니다');
-		}
-		console.log('selectNum: '+selectNum);
-		console.log('num: '+num);
-		console.log('selectSeatNum:' +selectSeatNum);
-	}
-	
-	function reserveSubmit(){
-		$.ajax({
-			type:"POST",
-			url: "/reserve/reserv/process",
-			dataType: "txt",
-			data:"seatNum="+returnVal,
-			success: function(msg){
-				alert('success');
-			},
-			fail: function(msg){
-				alert('fail');
-			}
-		});		
-	}
-	
-	function findRemoveSeat(s,seatNum){
-		
-		var seat = split(s,",");
-		var temp=new Array();
-		
-		for(var i=0;i<seat.length;i++){
-			if(parseInt(seat[i])==parseInt(seatNum)){
+			var personTotal = parseInt($("#adultNum").val())+parseInt($("#childNum").val());
+			
+			var seatId = $("#seatName"+num); 
+			
+			var selectSeatNum="";
+			
+			if(selectNum<=personTotal && seatId.hasClass("noReserveSeat")){
+				seatId.removeClass("noReserveSeat");
+				seatId.addClass("reserveSeat");
+				selectNum++;
+				returnVal.push(num);
 				
 			}
+
+			else if(seatId.hasClass("reserveSeat")){
+				seatId.removeClass("reserveSeat");
+				seatId.addClass("noReserveSeat");
+				selectNum--;
+				returnVal = removeArray(returnVal, num);
+
+			}
+			
 			else{
-				temp[i]=seat[i];
-				
+				alert('선택인원을 초과하였습니다');
 			}
+			console.log('selectNum: '+selectNum);
+			console.log('num: '+num);
+			console.log('selectSeatNum:' +selectSeatNum);
 		}
 		
-		return temp;
-	}
-	
-</script>
+		function reserveSubmit(){
+			$.ajax({
+				type:"POST",
+				url: "/reserve/reserv/process",
+				dataType: "txt",
+				data:"seatNum="+returnVal+"&airinformCode="+$("#airinformCode").val(),
+				success: function(msg){
+					alert('success');
+				},
+				fail: function(msg){
+					alert('fail');
+				}
+			});		
+		}
+		
+		
+		
+	</script>
 </body>
 </html>

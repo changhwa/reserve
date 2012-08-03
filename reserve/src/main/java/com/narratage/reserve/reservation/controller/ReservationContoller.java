@@ -32,6 +32,8 @@ public class ReservationContoller {
 	public String seatView(ModelMap model, HttpServletRequest req){
 		
 		String airinformCode = req.getParameter("airinformCode");
+
+		//Refector예정...
 		String seat = seatService.findSeat(airinformCode);
 		String[] seatValueSplit = StringUtil.split(seat,"#");
 		char[] joinSeatValuetoArray = StringUtil.arrayToString(seatValueSplit).toCharArray();
@@ -40,20 +42,30 @@ public class ReservationContoller {
 		joinSeatValuetoArray = seatService.viewReserved(joinSeatValuetoArray, seatNameList, airinformCode);		
 
 		model.addAttribute("seatNum",joinSeatValuetoArray);
-		
 		return "/reserve/seat";
 	}
 
 	@RequestMapping(value="/reserv/process")
 	
-	public @ResponseBody String reservationProcess(ModelMap model, HttpServletRequest req){
-		
-		String[] aa = req.getParameterValues("seatNum");
-		
-		for(int i =0 ; i<aa.length;i++){
-			System.out.println(aa[i]);
-		}
-		return "sss";
+	public String reservationProcess (ModelMap model, HttpServletRequest req,
+			@RequestParam HashMap<String,String> paramMap){
+
+
+		System.out.println(paramMap.get("seatNum"));
+
+		//Test 값
+		paramMap.put("userId","test123");
+		paramMap.put("date","2012-08-01");
+
+		//Refector예정 
+		String seat = seatService.findSeat(paramMap.get("airinformCode"));
+		String[] seatValueSplit = StringUtil.split(seat,"#");
+		ArrayList<String> seatNameList = seatService.makeSeatNameFromSeatArray(seatValueSplit);
+
+		seatService.ingReserve(paramMap, seatNameList);
+
+
+		return "index";
 	}
 	
 	/*@RequestMapping(value="/reserv/insert")
