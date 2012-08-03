@@ -33,13 +33,11 @@ public class TestSeatService {
 		//when
 		seatValue="01010101013#00000000003#11111111113#11111111113#00000000003#0101010101";
 		
-
 		temp = seatValue.split("#");
 		service = new TestSeatService();
 		joinSeatValue = StringUtil.arrayToString(temp).toCharArray();
 		
-
-		// post webpage
+		// Then post webpage
 		successSeat="02010101013000000000031111111112311111111113000000000030101010101";
 
 
