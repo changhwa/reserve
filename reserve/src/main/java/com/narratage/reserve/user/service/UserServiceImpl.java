@@ -1,5 +1,7 @@
 package com.narratage.reserve.user.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	public UserBean getUserInfo(String user_id) {
+	public ArrayList getUserInfo(String user_id) {
 		// TODO Auto-generated method stub
 		return userDao.getUserInfo(user_id);
 	}
@@ -44,8 +46,9 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
-	public int insertUser(UserBean userBean) {
+	public int insertUser(HashMap map) {
 		// TODO Auto-generated method stub
+		userDao.insertUser(map);
 		return 0;
 	}
 	
