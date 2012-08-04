@@ -12,7 +12,7 @@
     WHERE user_id=#{user_id}
   </select>
   
-  <select id="getUserInfo" parameterType="String" resultType="com.narratage.reserve.user.bean.UserBean">
+  <select id="getUserInfo" parameterType="String" resultType="hashmap">
   	SELECT *
   	FROM member
   	WHERE user_id=#{user_id}

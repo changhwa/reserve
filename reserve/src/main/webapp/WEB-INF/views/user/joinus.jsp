@@ -9,9 +9,9 @@
 <title>Join Page</title>
 </head>
 <body>
-	ID :
-	PW :
-	Name :
-	
+	<c:forEach items="${list }" var="userInfo"  varStatus="status">
+		ID: <c:out value="${userInfo.user_id }" /> <br />
+		Name: <c:out value="${userInfo.name }" /> <br />
+	</c:forEach>
 </body>
 </html>
