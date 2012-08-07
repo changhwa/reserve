@@ -3,8 +3,8 @@ package com.narratage.reserve.inform.dao;
 import java.util.Date;
 import java.util.List;
 
-import com.narratage.reserve.inform.datatype.SearchAirportType;
-import com.narratage.reserve.inform.datatype.SearchDateType;
+import com.narratage.reserve.inform.datatype.AirportType;
+import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 /**
@@ -14,7 +14,6 @@ import com.narratage.reserve.inform.domain.AirlineSchedule;
  * 
  */
 public interface AirlineScheduleDao {
-
 	/**
 	 * 하나의 공항을 기준으로 하는 기준 시간 내 모든 운항정보 리스트를 가져옵니다.
 	 * 
@@ -30,8 +29,8 @@ public interface AirlineScheduleDao {
 	 *            기준 종료 시간
 	 * @return
 	 */
-	public List<AirlineSchedule> get(SearchAirportType airportType,
-			SearchDateType dateType, String airportIATA, Date beginDate, Date endDate);
+	public List<AirlineSchedule> get(AirportType airportType,
+			DateType dateType, String airportIATA, Date beginDate, Date endDate);
 
 	/**
 	 * 두개의 공항을 기준으로 하는 기준 시간 내 모든 운항정보 리스트를 가져옵니다.
@@ -48,7 +47,7 @@ public interface AirlineScheduleDao {
 	 *            기준 종료시간
 	 * @return
 	 */
-	public List<AirlineSchedule> get(SearchDateType dateType,
+	public List<AirlineSchedule> get(DateType dateType,
 			String takeOffAirport, String landingAirport, Date beginDate, Date endDate);
 
 	/**

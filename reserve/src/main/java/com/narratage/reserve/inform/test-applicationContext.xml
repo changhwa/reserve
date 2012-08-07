@@ -12,9 +12,9 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost/test?characterEncoding=UTF-8" />
-		<property name="username" value="root" />
-		<property name="password" value="sesfinkl" />
+			value="jdbc:mysql://narratage.com/springair?characterEncoding=UTF-8" />
+		<property name="username" value="springair" />
+		<property name="password" value="@spring1!" />
 	</bean>
 
 	<!-- application components -->
@@ -38,7 +38,7 @@
 		<property name="airportDistanceDao" ref="airportDistanceDao" />
 	</bean>
 
-	<bean id="airlineService" class="com.narratage.reserve.inform.service.AirportServiceImpl">
+	<bean id="airlineService" class="com.narratage.reserve.inform.service.AirlineScheduleServiceImpl5">
 		<property name="airlineScheduleDao" ref="airlineScheduleDao" />
 	</bean>
 

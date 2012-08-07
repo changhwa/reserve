@@ -3,7 +3,7 @@ package com.test.reserve.inform.util;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,12 +33,12 @@ public class TableTest {
 		table.put(1, 2, "Test2");
 		table.put(2, 1, "Test3");
 
-		List<String> list = table.getByRow(1);
+		Map<Integer, String> map = table.getByRow(1);
 
-		assertThat(2, is(list.size()));
-		assertThat(true, is(list.contains("Test1")));
-		assertThat(true, is(list.contains("Test2")));
-		assertThat(false, is(list.contains("Test3")));
+		assertThat(2, is(map.size()));
+		assertThat(true, is(map.containsValue("Test1")));
+		assertThat(true, is(map.containsValue("Test2")));
+		assertThat(false, is(map.containsValue("Test3")));
 	}
 
 	@Test
@@ -47,13 +47,12 @@ public class TableTest {
 		table.put(1, 2, "Test2");
 		table.put(2, 1, "Test3");
 
-		List<String> list = table.getByColumn(1);
+		Map<Integer, String> map = table.getByRow(1);
 
-		assertThat(2, is(list.size()));
-		assertThat(true, is(list.contains("Test1")));
-		assertThat(false, is(list.contains("Test2")));
-		assertThat(true, is(list.contains("Test3")));
-	}
+		assertThat(2, is(map.size()));
+		assertThat(true, is(map.containsValue("Test1")));
+		assertThat(true, is(map.containsValue("Test2")));
+		assertThat(false, is(map.containsValue("Test3")));	}
 
 	@Test
 	public void get() {
@@ -62,13 +61,7 @@ public class TableTest {
 		table.put(2, 1, "Test3");
 		table.put(1, 1, "Test4");
 
-		List<String> list = table.get(1, 1);
-
-		assertThat(2, is(list.size()));
-		assertThat(true, is(list.contains("Test1")));
-		assertThat(false, is(list.contains("Test2")));
-		assertThat(false, is(list.contains("Test3")));
-		assertThat(true, is(list.contains("Test4")));
+		assertThat(table.get(1,1), is("Test4"));
 	}
 
 }

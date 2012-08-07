@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
-import com.narratage.reserve.inform.datatype.SearchAirportType;
-import com.narratage.reserve.inform.datatype.SearchDateType;
+import com.narratage.reserve.inform.datatype.AirportType;
+import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 import com.narratage.reserve.inform.util.Table;
 
@@ -33,7 +33,7 @@ public class AirlineScheduleServiceImpl2 implements AirlineScheduleService {
 
 		// 도착 공항에서 시작한다.
 		// 도착 공항에서는 해당 날짜에 도착할 수 있는 모든 데이터 값을 들고 오며 해당 데이터를 내부 오브젝트에 저장한다.
-		scheduleDao.get(SearchAirportType.LANDING, SearchDateType.LANDING, toAirportIATA, endArriveDate, new Date(
+		scheduleDao.get(AirportType.LANDING, DateType.LANDING, toAirportIATA, endArriveDate, new Date(
 				endArriveDate.getTime() + ONE_DAY));
 
 		return null;
@@ -78,14 +78,14 @@ public class AirlineScheduleServiceImpl2 implements AirlineScheduleService {
 			this.airlineScheduleDao = airlineScheduleDao;
 		}
 
-		public List<AirlineSchedule> get(SearchAirportType airportType, SearchDateType dateType, String airportIATA,
+		public List<AirlineSchedule> get(AirportType airportType, DateType dateType, String airportIATA,
 				Date beginDate, Date endDate) {
 			List<AirlineSchedule> list = airlineScheduleDao.get(airportType, dateType, airportIATA, beginDate, endDate);
 			this.tablePutByList(list);
 			return list;
 		}
 
-		public List<AirlineSchedule> get(SearchDateType dateType, String takeOffAirport, String landingAirport,
+		public List<AirlineSchedule> get(DateType dateType, String takeOffAirport, String landingAirport,
 				Date beginDate, Date endDate) {
 			return airlineScheduleDao.get(dateType, takeOffAirport, landingAirport, beginDate, endDate);
 		}

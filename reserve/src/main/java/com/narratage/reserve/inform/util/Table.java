@@ -2,7 +2,8 @@ package com.narratage.reserve.inform.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeSet;
 
 /**
@@ -25,6 +26,8 @@ import java.util.TreeSet;
  *            Value값을 정합니다.
  */
 public class Table<Row, Column, Value> {
+	private int CANNOT_FIND_INDEX = -1;
+
 	private ArrayList<Value> coreDataList;
 	private HashMap<Row, TreeSet<Integer>> rowIndexMap;
 	private HashMap<Column, TreeSet<Integer>> columnIndexMap;
@@ -35,69 +38,87 @@ public class Table<Row, Column, Value> {
 		columnIndexMap = new HashMap<Column, TreeSet<Integer>>();
 	}
 
+	public int rowSize() {
+		return rowIndexMap.size();
+	}
+
+	public int columnSize() {
+		return columnIndexMap.size();
+	}
+
 	public int size() {
 		return coreDataList.size();
 	}
 
-	/**
-	 * 데이터를 입력합니다.
-	 * 
-	 * @param row
-	 * @param column
-	 * @param value
-	 */
-	public void put(Row row, Column column, Value value) {
-		coreDataList.add(value);
-
-		if (rowIndexMap.containsKey(row) == false)
-			rowIndexMap.put(row, new TreeSet<Integer>());
-		if (columnIndexMap.containsKey(column) == false)
-			columnIndexMap.put(column, new TreeSet<Integer>());
-
-		rowIndexMap.get(row).add(coreDataList.size() - 1);
-		columnIndexMap.get(column).add(coreDataList.size() - 1);
+	public Value get(Row row, Column column) {
+		return coreDataList.get(this.getIndexOfRowColumn(row, column));
 	}
 
-	/**
-	 * row데이터를 기준으로 값을 가져옵니다.
-	 * 
-	 * @param row
-	 * @return
-	 */
-	public List<Value> getByRow(Row row) {
-		return returnListGenerator(rowIndexMap.get(row));
-	}
+	public boolean isExist(Row row, Column column) {
+		int idx = this.getIndexOfRowColumn(row, column);
 
-	/**
-	 * column값을 기준으로 값을 가져옵니다.
-	 * 
-	 * @param column
-	 * @return
-	 */
-	public List<Value> getByColumn(Column column) {
-		return returnListGenerator(columnIndexMap.get(column));
-	}
-
-	/**
-	 * row와 column을 둘 다 가지고있는 값을 가지고 옵니다.
-	 * 
-	 * @param row
-	 * @param column
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Value> get(Row row, Column column) {
-		TreeSet<Integer> tmpRowSet = (TreeSet<Integer>) rowIndexMap.get(row).clone();
-		tmpRowSet.retainAll(columnIndexMap.get(column));
-
-		return returnListGenerator(tmpRowSet);
-	}
-
-	private List<Value> returnListGenerator(TreeSet<Integer> indexSet) {
-		ArrayList<Value> list = new ArrayList<Value>();
-		for (Integer index : indexSet) {
-			list.add(coreDataList.get(index));
+		if (idx == CANNOT_FIND_INDEX) {
+			return false;
+		} else {
+			return true;
 		}
-		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	private int getIndexOfRowColumn(Row row, Column column) {
+		TreeSet<Integer> tmpRowSet = null;
+		
+		try {
+			tmpRowSet = (TreeSet<Integer>) rowIndexMap.get(row).clone();
+			tmpRowSet.retainAll(columnIndexMap.get(column));
+			
+			if (tmpRowSet.size() == 1)
+				return tmpRowSet.pollFirst();
+			else if (tmpRowSet.size() == 0)
+				return CANNOT_FIND_INDEX;
+			else
+				throw new RuntimeException("getIndexOfRowColumn Exception");
+			
+		} catch (NullPointerException e) {
+			return CANNOT_FIND_INDEX;
+		}
+		
+	}
+
+	public void put(Row row, Column column, Value value) {
+		int idx = getIndexOfRowColumn(row, column);
+		if (idx != CANNOT_FIND_INDEX) {
+			coreDataList.set(this.getIndexOfRowColumn(row, column), value);
+		} else {
+			coreDataList.add(value);
+
+			if (!rowIndexMap.containsKey(row))
+				rowIndexMap.put(row, new TreeSet<Integer>());
+			if (!columnIndexMap.containsKey(column))
+				columnIndexMap.put(column, new TreeSet<Integer>());
+
+			rowIndexMap.get(row).add(coreDataList.size() - 1);
+			columnIndexMap.get(column).add(coreDataList.size() - 1);
+		}
+	}
+
+	public Map<Column, Value> getByRow(Row row) {
+		Map<Column, Value> returnMap = new HashMap<Column, Value>();
+		Iterator<Column> iter = columnIndexMap.keySet().iterator();
+		while (iter.hasNext()) {
+			Column col = iter.next();
+			returnMap.put(col, get(row, col));
+		}
+		return returnMap;
+	}
+
+	public Map<Row, Value> getByColumn(Column col) {
+		Map<Row, Value> returnMap = new HashMap<Row, Value>();
+		Iterator<Row> iter = rowIndexMap.keySet().iterator();
+		while (iter.hasNext()) {
+			Row row = iter.next();
+			returnMap.put(row, get(row, col));
+		}
+		return returnMap;
 	}
 }

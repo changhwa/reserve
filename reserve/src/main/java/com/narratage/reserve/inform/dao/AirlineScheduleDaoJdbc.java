@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.narratage.reserve.inform.datatype.SearchAirportType;
-import com.narratage.reserve.inform.datatype.SearchDateType;
+import com.narratage.reserve.inform.datatype.AirportType;
+import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
 public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
@@ -32,14 +32,14 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 			airlineSchedule.setLandingAirport(rs.getString("landing_airport"));
 			airlineSchedule.setTakeOffDate(rs.getTimestamp("take_off_date"));
 			airlineSchedule.setLandingDate(rs.getTimestamp("landing_date"));
-			airlineSchedule.setAircraft(rs.getString("aircraft"));
+			airlineSchedule.setAirplaneCode(rs.getInt("airplaneCode"));
 			airlineSchedule.setPrice(rs.getInt("price"));
 
 			return airlineSchedule;
 		}
 	};
 
-	public List<AirlineSchedule> get(SearchAirportType airportType, SearchDateType dateType,
+	public List<AirlineSchedule> get(AirportType airportType, DateType dateType,
 			String airportIATA, Date beginDate, Date endDate) {
 		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE " + airportType.getSqlColName() + "=? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
@@ -47,20 +47,21 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 				this.airlineScheduleMapper);
 	}
 
-	public List<AirlineSchedule> get(SearchDateType dateType, String takeOffAirport, String landingAirport,
+	public List<AirlineSchedule> get(DateType dateType, String takeOffAirport, String landingAirport,
 			Date beginDate, Date endDate) {
 		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE take_off_airport = ? AND landing_airport = ? AND "
 				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
+		System.out.println(sql);
 		return this.jdbcTemplate.query(sql, new Object[] { takeOffAirport, landingAirport, beginDate, endDate },
 				this.airlineScheduleMapper);
 	}
 
 	public void add(AirlineSchedule airlineSchedule) {
 		this.jdbcTemplate.update(
-				"INSERT INTO airline_schedule(take_off_airport,landing_airport,take_off_date,landing_date,aircraft,price)"
+				"INSERT INTO airline_schedule(take_off_airport,landing_airport,take_off_date,landing_date,airplaneCode,price)"
 						+ " VALUES(?,?,?,?,?,?)", airlineSchedule.getTakeOffAirport(),
 				airlineSchedule.getLandingAirport(), airlineSchedule.getTakeOffDate(),
-				airlineSchedule.getLandingDate(), airlineSchedule.getAircraft(), airlineSchedule.getPrice());
+				airlineSchedule.getLandingDate(), airlineSchedule.getAirplaneCode(), airlineSchedule.getPrice());
 	}
 
 }

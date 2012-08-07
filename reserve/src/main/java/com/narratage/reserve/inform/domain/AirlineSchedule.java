@@ -9,21 +9,22 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 	private String landingAirport;
 	private Date takeOffDate;
 	private Date landingDate;
-	private String aircraft;
+	private int airplaneCode;
 	private int price;
 
 	public AirlineSchedule() {
 		super();
 	}
 
-	public AirlineSchedule(String takeOffAirport, String landingAirport, Date takeOffDate, Date landingDate,
-			String aircraft, int price) {
+	public AirlineSchedule(String takeOffAirport,
+			String landingAirport, Date takeOffDate, Date landingDate,
+			int airplaneCode, int price) {
 		super();
 		this.takeOffAirport = takeOffAirport;
 		this.landingAirport = landingAirport;
 		this.takeOffDate = takeOffDate;
 		this.landingDate = landingDate;
-		this.aircraft = aircraft;
+		this.airplaneCode = airplaneCode;
 		this.price = price;
 	}
 
@@ -67,12 +68,12 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 		this.landingDate = landingDate;
 	}
 
-	public String getAircraft() {
-		return aircraft;
+	public int getAirplaneCode() {
+		return airplaneCode;
 	}
 
-	public void setAircraft(String aircraft) {
-		this.aircraft = aircraft;
+	public void setAirplaneCode(int airplaneCode) {
+		this.airplaneCode = airplaneCode;
 	}
 
 	public int getPrice() {
@@ -84,13 +85,16 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 	}
 
 	// 날짜 테스트용
-	public static SimpleDateFormat SDF = new SimpleDateFormat("YYYY년MM월DD일 hh:mm:ss");
+	public static SimpleDateFormat SDF = new SimpleDateFormat(
+			"YYYY년MM월DD일 hh:mm:ss");
 
 	@Override
 	public String toString() {
-		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo + ", takeOffAirport=" + takeOffAirport
-				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + SDF.format(takeOffDate) + ", landingDate="
-				+ SDF.format(landingDate) + ", aircraft=" + aircraft + ", price=" + price + "]";
+		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo
+				+ ", takeOffAirport=" + takeOffAirport + ", landingAirport="
+				+ landingAirport + ", takeOffDate=" + takeOffDate
+				+ ", landingDate=" + landingDate + ", airplaneCode="
+				+ airplaneCode + ", price=" + price + "]";
 	}
 
 	public int compareTo(AirlineSchedule o) {
