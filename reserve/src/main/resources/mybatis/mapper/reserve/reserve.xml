@@ -9,7 +9,7 @@
   <select id="findAirinformCodeReserve" parameterType="String" resultType="hashmap">
   	SELECT *
   	FROM reservation
-  	WHERE airinformCode =#{airinformCode}
+  	WHERE airline_schedule_no =#{airinformCode}
   </select>
 
 </mapper>

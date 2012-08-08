@@ -1,5 +1,4 @@
 CREATE TABLE `member` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(50) NOT NULL,
   `password` varchar(32) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -16,5 +15,5 @@ CREATE TABLE `member` (
   `mileage` double DEFAULT NULL,
   `receive_mail` bit(1) DEFAULT NULL,
   `receive_sms` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY ('use_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
