@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
 import com.narratage.reserve.inform.domain.AirportDistance;
@@ -30,6 +31,7 @@ public class AirportDistanceTest {
 	}
 
 	@Test
+	@Transactional
 	public void addAndGet() {
 		this.airportDistanceDao.add(this.airportDistances[0]);
 		double getFormDaoDistance = airportDistanceDao.get(this.airportDistances[0].getFirstAirport(),

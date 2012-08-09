@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.dao.AirportDao;
@@ -120,6 +121,7 @@ public class AirlineScheduleServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void getAirportDistance() throws ParseException {
 		airlineScheduleService.getSortedAirlineScheduleList("LBG", "ICN", new Date(df.parse("20120912 0000 PST").getTime()), new Date(df.parse("20120913 2359 PST").getTime()));
 	}

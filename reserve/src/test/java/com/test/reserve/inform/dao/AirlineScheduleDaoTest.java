@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.datatype.AirportType;
@@ -52,6 +53,7 @@ public class AirlineScheduleDaoTest {
 	}
 
 	@Test
+	@Transactional
 	public void getDualAirportAirlineScheduleList() {
 		airlineScheduleDao.add(airlineSchedules[0]);
 		airlineScheduleDao.add(airlineSchedules[1]);
@@ -64,6 +66,7 @@ public class AirlineScheduleDaoTest {
 	}
 
 	@Test
+	@Transactional
 	public void getSingleAirportAirlineScheduleList() {
 		for (int idx = 0; idx < airlineSchedules.length; idx++) {
 			airlineScheduleDao.add(airlineSchedules[idx]);

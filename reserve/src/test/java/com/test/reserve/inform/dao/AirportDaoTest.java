@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.domain.Airport;
@@ -31,12 +32,14 @@ public class AirportDaoTest {
 	}
 
 	@Test
+	@Transactional
 	public void countAndDelete() {
 		airportDao.add(airports[0]);
 		airportDao.add(airports[1]);
 	}
 
 	@Test
+	@Transactional
 	public void getAirportInfo() {
 		airportDao.add(airports[0]);
 		airportDao.add(airports[1]);
