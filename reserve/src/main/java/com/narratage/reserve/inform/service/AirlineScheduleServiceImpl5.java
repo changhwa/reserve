@@ -9,13 +9,18 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.datatype.AirportType;
 import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 import com.narratage.reserve.inform.util.Table;
-
+@Service("AirlineScheduleService")
 public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
+	@Autowired
+	private AirlineScheduleDao airlineScheduleDao;
 
 	public static final int LIMIT_TRANSFER_AIRPORT_NUMBER = 3;
 	// 36시간 이상 걸리는 경우는 무시한다
@@ -30,12 +35,7 @@ public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
 	private static final String WORKED = "WORKED";
 
 	private static final int ROOT_PARENT_INDEX = Integer.MIN_VALUE;
-	private AirlineScheduleDao airlineScheduleDao;
-
-	public void setAirlineScheduleDao(AirlineScheduleDao airlineScheduleDao) {
-		this.airlineScheduleDao = airlineScheduleDao;
-	}
-
+	
 	public List<AirlineSchedule> getSortedAirlineScheduleList(String fromAirportIATA, String toAirportIATA,
 			Date startArriveDate, Date endArriveDate) {
 		// Table class를 활용한다. Table에는 총 4개의 컬럼이 필요하다.

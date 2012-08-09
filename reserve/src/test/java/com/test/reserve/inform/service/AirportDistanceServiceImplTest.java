@@ -1,9 +1,10 @@
 package com.test.reserve.inform.service;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Before;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static org.junit.matchers.JUnitMatchers.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
-import com.narratage.reserve.inform.dao.CommonDao;
 import com.narratage.reserve.inform.domain.Airport;
 import com.narratage.reserve.inform.service.AirportDistanceService;
 
@@ -25,8 +25,6 @@ public class AirportDistanceServiceImplTest {
 	AirportDao airportDao;
 	@Autowired
 	AirportDistanceDao airportDistanceDao;
-	@Autowired
-	CommonDao commonDao;
 
 	Airport[] airports;
 
@@ -40,12 +38,6 @@ public class AirportDistanceServiceImplTest {
 
 	@Test
 	public void getAirportDistance() {
-		commonDao.deleteAll("airport");
-		commonDao.deleteAll("airport_distance");
-
-		assertThat(commonDao.getCount("airport"), is(0));
-		assertThat(commonDao.getCount("airport_distance"), is(0));
-
 		for (int idx = 0; idx < airports.length; idx++) {
 			airportDao.add(airports[idx]);
 		}
@@ -62,6 +54,5 @@ public class AirportDistanceServiceImplTest {
 		assertThat(airportDao.get(airports[2].getIata()).getQueriedNumber(), is(3));
 		
 		//시작공항 도착공항이 서로 반대로 되어있어도 결과값은 동일함 count값은 하나만 나와야함
-		assertThat(commonDao.getCount("airport_distance"), is(1));
 	}
 }

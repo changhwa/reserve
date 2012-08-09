@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.narratage.reserve.inform.dao.AirlineSchedule">
+
+<cache />
+	<resultMap type="AirlineSchedule" id="schedule-info">
+		<result property="airlineScheduleNo" column="airline_schedule_no"/>
+		<result property="takeOffAirport" column="take_off_airport"/>
+		<result property="landingAirport" column="landing_airport"/>
+		<result property="takeOffDate" column="take_off_date"/>
+		<result property="landingDate" column="landing_date"/>
+		<result property="airplaneCode" column="airplaneCode"/>
+		<result property="price" column="price"/>
+	</resultMap>
+
+	<select id="getWithSingleAirport" resultMap="schedule-info" parameterType="hashmap">
+		SELECT *
+		  FROM AIRLINE_SCHEDULE
+		 WHERE     #airportType# = #iata#
+		       AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
+	</select>
+	
+	<select id="getWithDoubleAirport" resultMap="schedule-info" parameterType="hashmap">
+		SELECT *
+		  FROM AIRLINE_SCHEDULE
+		 WHERE    take_off_airport = #takeOffAirport#
+		      AND landing_airport = #landingAirport#
+		      AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
+	</select>
+	
+	<insert id="add" parameterType="Airline">
+		INSERT INTO airline_schedule(
+		    take_off_airport,
+		    landing_airport,
+		    take_off_date,
+		    landing_date,
+		    airplaneCode,
+		    price
+		) VALUES (
+		    #takeOffAirport#,
+		    #landingAirport#,
+		    STR_TO_DATE(#takeOffDate#, '%Y%m%d %H%i%s'),
+		    STR_TO_DATE(#landingDate#, '%Y%m%d %H%i%s'),
+		    #airplaneCode#,
+		    #price#
+		)
+	</insert>
+
+</mapper>

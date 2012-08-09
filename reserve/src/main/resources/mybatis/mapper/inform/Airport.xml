@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.narratage.reserve.inform.dao.AirportDao">
+
+<cache />
+	<resultMap type="Airport" id="airport-info">
+		<result property="iata" column="IATA" />
+		<result property="city" column="City" />
+		<result property="contry" column="Contry" />
+		<result property="latitude" column="Latitude" />
+		<result property="longtitude" column="Longtitude" />
+		<result property="altitude" column="Altitude" />
+		<result property="timezone" column="Timezone" />
+		<result property="dst" column="DST" />
+		<result property="quriedNumber" column="Queried_number" />
+	</resultMap>
+
+	<select id="get" resultMap="airport-info" parameterType="String">
+		SELECT *
+		  FROM AIRPORT
+		 WHERE IATA=${IATA}
+	</select>
+	
+	<insert id="add" parameterType="Airport">
+		INSERT INTO AIRPORT(
+		    IATA,
+		    City,
+		    Contry,
+		    Latitude,
+		    Longtitude,
+		    Altitude,
+		    Timezone,
+		    DST,
+		    Queried_number
+		)
+		VALUES(
+		    ${iata},
+		    ${city},
+		    ${contry},
+		    ${latitude},
+		    ${longtitude},
+		    ${altitude},
+		    ${timezone},
+		    ${dst},
+		    ${queried_number}    
+		)			
+	</insert>
+
+	<update id="updatePlusOneAtQueriedNumber" parameterType="String">
+		UPDATE AIRPORT SET
+			Queried_number = Queried_number+1
+		 WHERE IATA = ${IATA}
+	</update>
+
+</mapper>

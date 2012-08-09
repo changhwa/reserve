@@ -13,10 +13,10 @@ public class AirportDistanceDaoJdbc implements AirportDistanceDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	public double get(String IATA01, String IATA02) {
+	public double get(String firstAirprot, String secondAirport) {
 		return this.jdbcTemplate.queryForObject(
 				"SELECT distance FROM airport_distance WHERE first_airport=? AND second_airport=?", new Object[] {
-						IATA01, IATA02 }, Double.class);
+						firstAirprot, secondAirport }, Double.class);
 	}
 
 	public void add(AirportDistance airportDistance) {

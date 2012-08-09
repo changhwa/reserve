@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
-import com.narratage.reserve.inform.dao.CommonDao;
 import com.narratage.reserve.inform.domain.AirportDistance;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,8 +19,6 @@ public class AirportDistanceTest {
 
 	@Autowired
 	AirportDistanceDao airportDistanceDao;
-	@Autowired
-	CommonDao commonDao;
 
 	private AirportDistance airportDistances[];
 
@@ -34,10 +31,7 @@ public class AirportDistanceTest {
 
 	@Test
 	public void addAndGet() {
-		this.commonDao.deleteAll("airport_distance");
-		assertThat(this.commonDao.getCount("airport_distance"), is(0));
 		this.airportDistanceDao.add(this.airportDistances[0]);
-		assertThat(this.commonDao.getCount("airport_distance"), is(1));
 		double getFormDaoDistance = airportDistanceDao.get(this.airportDistances[0].getFirstAirport(),
 				this.airportDistances[0].getSecondAirport());
 		assertThat(getFormDaoDistance, is(this.airportDistances[0].getDistance()));

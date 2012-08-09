@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.narratage.reserve.inform.dao.AirportDao;
-import com.narratage.reserve.inform.dao.CommonDao;
 import com.narratage.reserve.inform.domain.Airport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,8 +19,6 @@ public class AirportDaoTest {
 
 	@Autowired
 	AirportDao airportDao;
-	@Autowired
-	CommonDao commonDao;
 
 	private Airport airports[];
 
@@ -35,26 +32,16 @@ public class AirportDaoTest {
 
 	@Test
 	public void countAndDelete() {
-		commonDao.deleteAll("airport");
 		airportDao.add(airports[0]);
-		simpleAirportCount(1);
 		airportDao.add(airports[1]);
-		simpleAirportCount(2);
-		commonDao.deleteAll("airport");
-		simpleAirportCount(0);
 	}
 
 	@Test
 	public void getAirportInfo() {
-		commonDao.deleteAll("airport");
 		airportDao.add(airports[0]);
 		airportDao.add(airports[1]);
 		Airport getFromDaoAirport = airportDao.get(airports[0].getIata());
 		simpleAirportCompare(getFromDaoAirport, airports[0]);
-	}
-
-	private void simpleAirportCount(int expectedAirportNumber) {
-		assertThat(commonDao.getCount("airport"), is(expectedAirportNumber));
 	}
 
 	private void simpleAirportCompare(Airport airport1, Airport airport2) {

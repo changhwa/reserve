@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
-import com.narratage.reserve.inform.dao.CommonDao;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 import com.narratage.reserve.inform.domain.Airport;
 import com.narratage.reserve.inform.service.AirlineScheduleService;
@@ -27,8 +26,6 @@ public class AirlineScheduleServiceImplTest {
 	AirportDao airportDao;
 	@Autowired
 	AirportDistanceDao airportDistanceDao;
-	@Autowired
-	CommonDao commonDao;
 	@Autowired
 	AirlineScheduleDao scheduleDao;
 	@Autowired

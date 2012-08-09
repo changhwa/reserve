@@ -7,7 +7,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +16,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
-import com.narratage.reserve.inform.dao.CommonDao;
 import com.narratage.reserve.inform.datatype.AirportType;
 import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
@@ -38,8 +36,6 @@ public class AirlineScheduleDaoTest {
 
 	@Autowired
 	AirlineScheduleDao airlineScheduleDao;
-	@Autowired
-	CommonDao commonDao;
 
 	AirlineSchedule[] airlineSchedules;
 
@@ -57,11 +53,8 @@ public class AirlineScheduleDaoTest {
 
 	@Test
 	public void getDualAirportAirlineScheduleList() {
-		simpleDeleteAll();
-		this.simpleCount(0);
 		airlineScheduleDao.add(airlineSchedules[0]);
 		airlineScheduleDao.add(airlineSchedules[1]);
-		this.simpleCount(2);
 
 		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(DateType.LANDING,
 				airlineSchedules[0].getTakeOffAirport(), airlineSchedules[0].getLandingAirport(), BASE_DATE1,
@@ -72,7 +65,6 @@ public class AirlineScheduleDaoTest {
 
 	@Test
 	public void getSingleAirportAirlineScheduleList() {
-		simpleDeleteAll();
 		for (int idx = 0; idx < airlineSchedules.length; idx++) {
 			airlineScheduleDao.add(airlineSchedules[idx]);
 		}
@@ -97,11 +89,4 @@ public class AirlineScheduleDaoTest {
 		assertThat(df.format(airlineSchedule1.getLandingDate()), is(df.format(airlineSchedule2.getLandingDate())));
 	}
 
-	private void simpleCount(int expected) {
-		assertThat(commonDao.getCount("airline_schedule"), is(expected));
-	}
-
-	private void simpleDeleteAll() {
-		commonDao.deleteAll("airline_schedule");
-	}
 }
