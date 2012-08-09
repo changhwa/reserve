@@ -21,7 +21,6 @@ import com.narratage.reserve.inform.domain.Airport;
 import com.narratage.reserve.inform.service.AirlineScheduleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
 public class AirlineScheduleServiceImplTest {
 	@Autowired
 	AirportDao airportDao;

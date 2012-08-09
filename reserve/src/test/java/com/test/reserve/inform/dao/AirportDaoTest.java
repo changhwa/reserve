@@ -14,8 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.domain.Airport;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
+@ContextConfiguration(locations = "/mybatis/application-mybatis.xml")
 public class AirportDaoTest {
 
 	@Autowired
@@ -32,14 +33,12 @@ public class AirportDaoTest {
 	}
 
 	@Test
-	@Transactional
 	public void countAndDelete() {
 		airportDao.add(airports[0]);
 		airportDao.add(airports[1]);
 	}
 
 	@Test
-	@Transactional
 	public void getAirportInfo() {
 		airportDao.add(airports[0]);
 		airportDao.add(airports[1]);

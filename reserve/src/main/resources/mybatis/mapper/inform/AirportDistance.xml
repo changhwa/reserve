@@ -12,7 +12,7 @@
 		      AND SECOND_AIRPORT=${secondAirport}
 	</select>
 	
-	<insert id="add" parameterType="Airport">
+	<insert id="add" parameterType="com.narratage.reserve.inform.domain.AirportDistance">
 		INSERT INTO AIRPORT_DISTANCE(
 		   first_airport
 		  ,second_airport

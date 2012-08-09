@@ -5,7 +5,7 @@
 <mapper namespace="com.narratage.reserve.inform.dao.AirportDao">
 
 <cache />
-	<resultMap type="Airport" id="airport-info">
+	<resultMap type="com.narratage.reserve.inform.domain.Airport" id="airport-info">
 		<result property="iata" column="IATA" />
 		<result property="city" column="City" />
 		<result property="contry" column="Contry" />
@@ -23,7 +23,7 @@
 		 WHERE IATA=${IATA}
 	</select>
 	
-	<insert id="add" parameterType="Airport">
+	<insert id="add" parameterType="com.narratage.reserve.inform.domain.Airport">
 		INSERT INTO AIRPORT(
 		    IATA,
 		    City,

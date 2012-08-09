@@ -18,7 +18,6 @@ import com.narratage.reserve.inform.domain.Airport;
 import com.narratage.reserve.inform.service.AirportDistanceService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
 public class AirportDistanceServiceImplTest {
 	@Autowired
 	AirportDistanceService airportDistanceService;

@@ -28,7 +28,7 @@ import com.narratage.reserve.inform.domain.AirlineSchedule;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
+@Transactional
 public class AirlineScheduleDaoTest {
 	private static final Date BASE_DATE1 = new Date(System.currentTimeMillis());
 	private static final long SEVEN_DAYS_BY_LONG = 1000 * 60 * 60 * 24 * 7;
@@ -53,7 +53,6 @@ public class AirlineScheduleDaoTest {
 	}
 
 	@Test
-	@Transactional
 	public void getDualAirportAirlineScheduleList() {
 		airlineScheduleDao.add(airlineSchedules[0]);
 		airlineScheduleDao.add(airlineSchedules[1]);
@@ -66,7 +65,6 @@ public class AirlineScheduleDaoTest {
 	}
 
 	@Test
-	@Transactional
 	public void getSingleAirportAirlineScheduleList() {
 		for (int idx = 0; idx < airlineSchedules.length; idx++) {
 			airlineScheduleDao.add(airlineSchedules[idx]);

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.narratage.reserve.inform.dao.AirlineSchedule">
+<mapper namespace="com.narratage.reserve.inform.dao.AirlineScheduleDao">
 
 <cache />
-	<resultMap type="AirlineSchedule" id="schedule-info">
+	<resultMap type="com.narratage.reserve.inform.domain.AirlineSchedule" id="schedule-info">
 		<result property="airlineScheduleNo" column="airline_schedule_no"/>
 		<result property="takeOffAirport" column="take_off_airport"/>
 		<result property="landingAirport" column="landing_airport"/>
@@ -30,7 +30,7 @@
 		      AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
 	</select>
 	
-	<insert id="add" parameterType="Airline">
+	<insert id="add" parameterType="com.narratage.reserve.inform.domain.AirlineSchedule">
 		INSERT INTO airline_schedule(
 		    take_off_airport,
 		    landing_airport,

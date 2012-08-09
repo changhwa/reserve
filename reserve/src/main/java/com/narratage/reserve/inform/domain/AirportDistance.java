@@ -1,5 +1,6 @@
 package com.narratage.reserve.inform.domain;
 
+
 public class AirportDistance {
 	private String firstAirport;
 	private String secondAirport;

@@ -1,5 +1,6 @@
 package com.narratage.reserve.inform.domain;
 
+
 public class Airport {
 	private String iata;
 	private String city;

@@ -16,8 +16,7 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 		super();
 	}
 
-	public AirlineSchedule(String takeOffAirport,
-			String landingAirport, Date takeOffDate, Date landingDate,
+	public AirlineSchedule(String takeOffAirport, String landingAirport, Date takeOffDate, Date landingDate,
 			int airplaneCode, int price) {
 		super();
 		this.takeOffAirport = takeOffAirport;
@@ -85,16 +84,13 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 	}
 
 	// 날짜 테스트용
-	public static SimpleDateFormat SDF = new SimpleDateFormat(
-			"YYYY년MM월DD일 hh:mm:ss");
+	public static SimpleDateFormat SDF = new SimpleDateFormat("YYYY년MM월DD일 hh:mm:ss");
 
 	@Override
 	public String toString() {
-		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo
-				+ ", takeOffAirport=" + takeOffAirport + ", landingAirport="
-				+ landingAirport + ", takeOffDate=" + takeOffDate
-				+ ", landingDate=" + landingDate + ", airplaneCode="
-				+ airplaneCode + ", price=" + price + "]";
+		return "AirlineSchedule [airlineScheduleNo=" + airlineScheduleNo + ", takeOffAirport=" + takeOffAirport
+				+ ", landingAirport=" + landingAirport + ", takeOffDate=" + takeOffDate + ", landingDate="
+				+ landingDate + ", airplaneCode=" + airplaneCode + ", price=" + price + "]";
 	}
 
 	public int compareTo(AirlineSchedule o) {

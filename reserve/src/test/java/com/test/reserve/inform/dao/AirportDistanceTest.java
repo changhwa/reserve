@@ -15,7 +15,7 @@ import com.narratage.reserve.inform.dao.AirportDistanceDao;
 import com.narratage.reserve.inform.domain.AirportDistance;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/com/narratage/reserve/inform/test-applicationContext.xml")
+@Transactional
 public class AirportDistanceTest {
 
 	@Autowired
@@ -31,7 +31,6 @@ public class AirportDistanceTest {
 	}
 
 	@Test
-	@Transactional
 	public void addAndGet() {
 		this.airportDistanceDao.add(this.airportDistances[0]);
 		double getFormDaoDistance = airportDistanceDao.get(this.airportDistances[0].getFirstAirport(),
