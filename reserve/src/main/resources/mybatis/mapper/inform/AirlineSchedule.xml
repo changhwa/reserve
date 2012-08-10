@@ -15,14 +15,14 @@
 		<result property="price" column="price"/>
 	</resultMap>
 
-	<select id="getWithSingleAirport" resultMap="schedule-info" parameterType="hashmap">
+	<select id="getWithSingleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
 		SELECT *
 		  FROM AIRLINE_SCHEDULE
 		 WHERE     #airportType# = #iata#
 		       AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
 	</select>
 	
-	<select id="getWithDoubleAirport" resultMap="schedule-info" parameterType="hashmap">
+	<select id="getWithDoubleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
 		SELECT *
 		  FROM AIRLINE_SCHEDULE
 		 WHERE    take_off_airport = #takeOffAirport#

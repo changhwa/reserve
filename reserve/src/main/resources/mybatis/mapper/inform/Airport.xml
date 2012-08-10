@@ -44,7 +44,7 @@
 		    ${altitude},
 		    ${timezone},
 		    ${dst},
-		    ${queried_number}    
+		    ${queriedNumber}    
 		)			
 	</insert>
 

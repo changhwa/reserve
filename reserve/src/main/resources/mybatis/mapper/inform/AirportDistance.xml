@@ -5,7 +5,7 @@
 <mapper namespace="com.narratage.reserve.inform.dao.AirportDistanceDao">
 <cache />
 
-	<select id="get" resultType="double" parameterMap="hashmap">
+	<select id="get" resultType="double" parameterType="java.util.HashMap">
 		SELECT DISTANCE
 		  FROM AIRPORT_DISTANCE
 		 WHERE      FIRST_AIRPORT=${firstAirport}
