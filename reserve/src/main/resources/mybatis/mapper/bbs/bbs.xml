@@ -16,23 +16,23 @@
 
   <cache />
 
-	<resultMap type="BbsVo" id="bbs-info">
-		<id property="bbsId" column="bbs_id" />
-		<result property="title" column="title" />
-		<result property="insertDt" column="insert_dt" />
-		<result property="insertAdminId" column="insert_admin_id" />
-		<result property="updateDt" column="update_dt" />
-		<result property="updateAdminId" column="update_admin_id" />
-		<result property="content" column="content" />
-		<result property="picture" column="picture" />
-		<result property="comment" column="comment" />
-		<result property="likeCnt" column="like_cnt" />
-		<result property="viewCnt" column="view_cnt" />
-		<result property="htmlYn" column="html_yn" />
-		<result property="country" column="country" />
-		<result property="city" column="city" />
-		<result property="subjectSchedule" column="subject_schedule" />
-		<result property="probableCost" column="probable_cost" />
+	<resultMap type="com.narratage.reserve.bbs.vo.BbsVo" id="bbs-info">
+		<id property="intBbsId" column="bbs_id" />
+		<result property="strTitle" column="title" />
+		<result property="strInsertDt" column="insert_dt" />
+		<result property="strInsertAdminId" column="insert_admin_id" />
+		<result property="strUpdateDt" column="update_dt" />
+		<result property="strUpdateAdminId" column="update_admin_id" />
+		<result property="strContent" column="content" />
+		<result property="strPicture" column="picture" />
+		<result property="strComment" column="comment" />
+		<result property="intLikeCnt" column="like_cnt" />
+		<result property="intViewCnt" column="view_cnt" />
+		<result property="strHtmlYn" column="html_yn" />
+		<result property="strCountry" column="country" />
+		<result property="strCity" column="city" />
+		<result property="strSubjectSchedule" column="subject_schedule" />
+		<result property="strProbableCost" column="probable_cost" />
 	</resultMap>
 	
 	
@@ -43,6 +43,12 @@
 	     * @since 2012-06-26
 	     */
   	--> 
+  	<select id="selectBbsList" resultType="hashmap">
+	  	SELECT *
+	  	FROM bbs
+  	</select>
+  
+  <!-- 
 	<select id="selectBbsList" resultMap="bbs-info">
 		SELECT bbs_id,
 		title,
@@ -63,7 +69,10 @@
 		FROM bbs
 		ORDER BY bbs_id DESC
 	</select>
-	
+	-->
+	 
+	 
+	 
 	<!-- 	    
 		/**
 	     * BBS 테이블 detail 쿼리
@@ -71,7 +80,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<select id="selectBbsDetail" parameterType="BbsVo" resultMap="bbs-info">
+	<select id="selectBbsDetail" parameterType="com.narratage.reserve.bbs.vo.BbsVo" resultMap="bbs-info">
 	  	SELECT bbs_id,
 		title,
 		insert_dt,
@@ -92,6 +101,19 @@
 		WHERE bbs_id = #{bbsId}
 	</select>
   
+  	
+  	<!-- 	    
+		/**
+	     * bbs_id max값 추출
+	     * @author 안경모
+	     * @since 2012-08-04
+	     */
+  	--> 
+	<select id="selectMaxBbsId" resultType="Integer">
+	  	SELECT max(bbs_id) as max_bbs_id
+		FROM bbs
+	</select>
+  
   
   	<!-- 	    
 		/**
@@ -100,7 +122,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<insert id="insertBbs" parameterType="BbsVo">
+	<insert id="insertBbs" parameterType="com.narratage.reserve.bbs.vo.BbsVo">
 		INSERT INTO bbs (
 		bbs_id,
 		title,
@@ -119,22 +141,22 @@
 		subject_schedule, 
 		probable_cost)
 		VALUES (
-		#{bbsId}, 
-		#{title}, 
-		#{insertDt}, 
-		#{insertAdminId}, 
-		#{updateDt}, 
-		#{updateAdminId}, 
-		#{content}, 
-		#{picture}, 
-		#{comment}, 
-		#{likeCnt}, 
-		#{viewCnt},
-		#{htmlYn}, 
-		#{country},
-		#{city}, 
-		#{subjectSchedule}, 
-		#{probableCost})
+		#{intBbsId}, 
+		#{strTitle}, 
+		#{strInsertDt}, 
+		#{strInsertAdminId}, 
+		#{strUpdateDt}, 
+		#{strUpdateAdminId}, 
+		#{strContent}, 
+		#{strPicture}, 
+		#{strComment}, 
+		#{intLikeCnt}, 
+		#{intViewCnt},
+		#{strHtmlYn}, 
+		#{strCountry},
+		#{strCity}, 
+		#{strSubjectSchedule}, 
+		#{strProbableCost})
 	</insert>
 	
 	
@@ -145,7 +167,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<update id="updateBbs" parameterType="BbsVo">
+	<update id="updateBbs" parameterType="com.narratage.reserve.bbs.vo.BbsVo">
 		UPDATE bbs
 		SET
 			title 				= #{title}
@@ -173,7 +195,7 @@
 	     * @since 2012-06-26
 	     */
   	--> 
-	<delete id="deleteBbs" parameterType="BbsVo">
+	<delete id="deleteBbs" parameterType="com.narratage.reserve.bbs.vo.BbsVo">
 		DELETE FROM bbs WHERE bbs_id = #{bbsId}
 	</delete>
 	
