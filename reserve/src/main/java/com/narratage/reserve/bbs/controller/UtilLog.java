@@ -74,6 +74,12 @@ public abstract class UtilLog {
 		model.addAttribute("returnUri", returnUri);
 		return "/common/alert";
 	}
+	
+	public String alert(String alertMsg) throws Exception {
+		return alert(alertMsg);
+	}
+	
+	
 }
 
 

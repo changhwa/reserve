@@ -16,7 +16,7 @@ public class BbsVo {
 	  private String strHtmlYn;
 	  private String strCountry;
 	  private String strCity;
-	  private String strSubJectSchedule;
+	  private String strSubjectSchedule;
 	  private String strProbableCost;
 	  
 	  
@@ -104,11 +104,11 @@ public class BbsVo {
 	public void setStrCity(String strCity) {
 		this.strCity = strCity;
 	}
-	public String getStrSubJectSchedule() {
-		return strSubJectSchedule;
+	public String getStrSubjectSchedule() {
+		return strSubjectSchedule;
 	}
-	public void setStrSubJectSchedule(String strSubJectSchedule) {
-		this.strSubJectSchedule = strSubJectSchedule;
+	public void setStrSubjectSchedule(String strSubjectSchedule) {
+		this.strSubjectSchedule = strSubjectSchedule;
 	}
 	public String getStrProbableCost() {
 		return strProbableCost;

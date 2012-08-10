@@ -23,8 +23,18 @@ public class BbsDaoImpl extends SqlSessionDaoSupport implements BbsDao {
 	}
 	
 	public List<BbsVo> selectBbsList() {
-		return (List<BbsVo>) getSqlSession().selectList("com.narratage.reserve.bbs.dao.BbsDao.selectBbsList");	
+		System.out.println(" --------------- DAO select method 전");
+		return (List<BbsVo>) getSqlSession().selectList("com.narratage.reserve.bbs.dao.BbsDao.selectBbsList");
+//		System.out.println(" --------------- DAO select method 후");
+		
 	}
+	
+	public int selectMaxBbsId() {
+		System.out.println(" --------------- selectMaxBbsId");
+		System.out.println(" --------------- selectMaxBbsId method 전");
+		return (Integer)getSqlSession().selectOne("com.narratage.reserve.bbs.dao.BbsDao.selectMaxBbsId");
+	}
+	
 	public int insertBbs(BbsVo BbsVo) {
 		return (int) getSqlSession().insert("com.narratage.reserve.bbs.dao.BbsDao.insertBbs", BbsVo);	
 	}
