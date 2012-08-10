@@ -3,6 +3,7 @@ package com.narratage.reserve.inform.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -14,6 +15,7 @@ import com.narratage.reserve.inform.datatype.AirportType;
 import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 
+@Deprecated
 public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 
 	private JdbcTemplate jdbcTemplate;
@@ -37,23 +39,6 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 		}
 	};
 
-	public List<AirlineSchedule> get(AirportType airportType, DateType dateType,
-			String airportIATA, Date beginDate, Date endDate) {
-		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE " + airportType.getSqlColName() + "=? AND "
-				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
-		return this.jdbcTemplate.query(sql, new Object[] { airportIATA, beginDate, endDate },
-				this.airlineScheduleMapper);
-	}
-
-	public List<AirlineSchedule> get(DateType dateType, String takeOffAirport, String landingAirport,
-			Date beginDate, Date endDate) {
-		String sql = "SELECT * FROM AIRLINE_SCHEDULE WHERE take_off_airport = ? AND landing_airport = ? AND "
-				+ dateType.getSqlColName() + " BETWEEN ? AND ?";
-		System.out.println(sql);
-		return this.jdbcTemplate.query(sql, new Object[] { takeOffAirport, landingAirport, beginDate, endDate },
-				this.airlineScheduleMapper);
-	}
-
 	public void add(AirlineSchedule airlineSchedule) {
 		this.jdbcTemplate.update(
 				"INSERT INTO airline_schedule(take_off_airport,landing_airport,take_off_date,landing_date,airplaneCode,price)"
@@ -62,4 +47,14 @@ public class AirlineScheduleDaoJdbc implements AirlineScheduleDao {
 				airlineSchedule.getLandingDate(), airlineSchedule.getAirplaneCode(), airlineSchedule.getPrice());
 	}
 
+	public List<HashMap<String, Object>> getPath(String takeOffAirport, String landingAirport, Date beginArriveDate,
+			Date endArriveDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public AirlineSchedule get(int airlineScheduleNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

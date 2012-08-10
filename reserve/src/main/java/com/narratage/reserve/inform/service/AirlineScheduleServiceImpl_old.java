@@ -8,19 +8,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
-import com.narratage.reserve.inform.datatype.AirportType;
-import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
 import com.narratage.reserve.inform.util.Table;
 
-@Service("AirlineScheduleService")
-public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
+@Deprecated
+public class AirlineScheduleServiceImpl_old implements AirlineScheduleService {
 	@Autowired
 	private AirlineScheduleDao airlineScheduleDao;
 
@@ -40,7 +37,7 @@ public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
 
 	private static final int ROOT_PARENT_INDEX = Integer.MIN_VALUE;
 
-	public List<AirlineSchedule> getSortedAirlineScheduleList(String fromAirportIATA, String toAirportIATA,
+	public List<AirlineSchedule> getAirlineScheduleList(String fromAirportIATA, String toAirportIATA,
 			Date startArriveDate, Date endArriveDate) {
 		// Table class를 활용한다. Table에는 총 4개의 컬럼이 필요하다.
 		// parentIndex, IATA, BeginLandingDate, EndLandingDate
@@ -83,8 +80,9 @@ public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
 			tmpBeginDate = (Date) routeTable.get(routeIndex, BEGIN_LANDING_DATE);
 			tmpEndDate = (Date) routeTable.get(routeIndex, END_LANDING_DATE);
 
-			List<AirlineSchedule> tmpSchedule = airlineScheduleDao.get(AirportType.LANDING, DateType.LANDING, tmpIATA,
-					tmpBeginDate, tmpEndDate);
+			List<AirlineSchedule> tmpSchedule = null;
+			// airlineScheduleDao.get(AirportType.LANDING, DateType.LANDING,
+			// tmpIATA,tmpBeginDate, tmpEndDate);
 
 			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 			for (AirlineSchedule s : tmpSchedule) {
@@ -199,19 +197,22 @@ public class AirlineScheduleServiceImpl5 implements AirlineScheduleService {
 					+ (Date) routeTable.get(idx, BEGIN_LANDING_DATE) + " 도착시간="
 					+ (Date) routeTable.get(idx, END_LANDING_DATE));
 		}
-		
-		
+
 		/********************************************************************/
-		/************************길찾기 완료*******************************/
+		/************************ 길찾기 완료 *******************************/
 		/********************************************************************/
 
-		//routeTable에서 IATA컬럼이 출발 공항인 경우를 찾습니다.
-		//routeTable.getByColumn(fromAirportIATA)
-		
-		//부모값을 하나씩 찾아가며 해당하는 스케쥴을 들고 오며, 해당하는 값들의 
-		
-		
+		// routeTable에서 IATA컬럼이 출발 공항인 경우를 찾습니다.
+		// routeTable.getByColumn(fromAirportIATA)
 
+		// 부모값을 하나씩 찾아가며 해당하는 스케쥴을 들고 오며, 해당하는 값들의
+
+		return null;
+	}
+
+	public List<HashMap<String, Object>> getPathList(String fromAirportIATA, String toAirportIATA, Date startArriveDate,
+			Date endArriveDate) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

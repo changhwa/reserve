@@ -122,6 +122,6 @@ public class AirlineScheduleServiceImplTest {
 	@Test
 	@Transactional
 	public void getAirportDistance() throws ParseException {
-		airlineScheduleService.getSortedAirlineScheduleList("LBG", "ICN", new Date(df.parse("20120912 0000 PST").getTime()), new Date(df.parse("20120913 2359 PST").getTime()));
+		//airlineScheduleService.getSortedAirlineScheduleList("LBG", "ICN", new Date(df.parse("20120912 0000 PST").getTime()), new Date(df.parse("20120913 2359 PST").getTime()));
 	}
 }

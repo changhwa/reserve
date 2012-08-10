@@ -14,20 +14,11 @@
 		<result property="airplaneCode" column="airplaneCode"/>
 		<result property="price" column="price"/>
 	</resultMap>
-
-	<select id="getWithSingleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
-		SELECT *
-		  FROM AIRLINE_SCHEDULE
-		 WHERE     #airportType# = #iata#
-		       AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
-	</select>
 	
-	<select id="getWithDoubleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
+	<select id="get" resultMap="schedule-info">
 		SELECT *
-		  FROM AIRLINE_SCHEDULE
-		 WHERE    take_off_airport = #takeOffAirport#
-		      AND landing_airport = #landingAirport#
-		      AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
+		  FROM airline_schedule
+		 WHERE airline_schedule_no=${airlineScheduleNo}
 	</select>
 	
 	<insert id="add" parameterType="com.narratage.reserve.inform.domain.AirlineSchedule">
@@ -47,5 +38,82 @@
 		    #price#
 		)
 	</insert>
+	
+	<select id="getPath" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<![CDATA[
+		SELECT take_off_airport,
+		       landing_airport,
+		       take_off_date,
+		       landing_date,
+		       TIMESTAMPDIFF(MINUTE, take_off_date, landing_date) take_minute,
+		       '' via_airport,
+		       price,
+		       '' via_airline_01,
+		       '' via_airline_02
+		  FROM AIRLINE_SCHEDULE
+		 WHERE     take_off_airport = ${takeOffAirport}
+		       AND landing_airport = ${landingAirpot}
+		       AND landing_date BETWEEN STR_TO_DATE(${beginArriveDate}, '%Y%m%d %H%i')
+		                            AND STR_TO_DATE(${endArriveDate}, '%Y%m%d %H%i')
+		UNION ALL
+		SELECT SC1.take_off_airport,
+		       SC2.landing_airport,
+		       SC1.take_off_date,
+		       SC2.landing_date,
+		       TIMESTAMPDIFF(MINUTE, SC1.take_off_date, SC2.landing_date) take_minute,
+		       SC1.landing_airport via_airport,
+		       SC1.price + SC2.price price,
+		       SC2.airline_schedule_no via_airline_01,
+		       '' via_airline_02
+		  FROM AIRLINE_SCHEDULE SC1, AIRLINE_SCHEDULE SC2
+		 WHERE     SC1.landing_airport = SC2.take_off_airport
+		       AND SC1.take_off_date > SC2.landing_date - INTERVAL 36 HOUR
+		       AND SC1.take_off_date < SC2.landing_Date
+		       AND SC1.take_off_airport = ${takeOffAirport}
+		       AND SC2.landing_airport = ${landingAirpot}
+		       AND SC2.landing_date BETWEEN STR_TO_DATE(${beginArriveDate}, '%Y%m%d %H%i')
+		                                AND STR_TO_DATE(${endArriveDate}, '%Y%m%d %H%i')
+		UNION ALL
+		SELECT SC1.take_off_airport,
+		       SC3.landing_airport,
+		       SC1.take_off_date,
+		       SC3.landing_date,
+		       TIMESTAMPDIFF(MINUTE, SC1.take_off_date, SC3.landing_date) take_minute,
+		       concat(SC1.landing_airport, ', ', SC2.landing_airport) via_airport,
+		       SC1.price + SC2.price + SC3.price price,
+		       SC2.airline_schedule_no via_airline_01,
+		       SC3.airline_schedule_no via_airline_02
+		  FROM AIRLINE_SCHEDULE SC1, AIRLINE_SCHEDULE SC2, AIRLINE_SCHEDULE SC3
+		 WHERE     SC1.landing_airport = SC2.take_off_airport
+		       AND SC2.landing_airport = SC3.take_off_airport
+		       AND SC1.take_off_airport != SC3.take_off_airport
+		       AND SC1.take_off_date > SC3.landing_date - INTERVAL 36 HOUR
+		       AND SC1.take_off_date < SC2.landing_Date
+		       AND SC2.take_off_date < SC3.landing_date
+		       AND SC1.take_off_airport = ${takeOffAirport}
+		       AND SC3.landing_airport = ${landingAirpot}
+		       AND SC3.landing_date BETWEEN STR_TO_DATE(${beginArriveDate}, '%Y%m%d %H%i')
+		                                AND STR_TO_DATE(${endArriveDate}, '%Y%m%d %H%i')	
+	]]>
+	</select>
+	
+	
+	<!-- Not use anymore -->
+	<select id="getWithSingleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
+		SELECT *
+		  FROM AIRLINE_SCHEDULE
+		 WHERE     #airportType# = #iata#
+		       AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
+	</select>
+	
+	<!-- Not use anymore -->
+	<select id="getWithDoubleAirport" resultMap="schedule-info" parameterType="java.util.HashMap">
+		SELECT *
+		  FROM AIRLINE_SCHEDULE
+		 WHERE    take_off_airport = #takeOffAirport#
+		      AND landing_airport = #landingAirport#
+		      AND #dateType# BETWEEN STR_TO_DATE(#beginDate#, '%Y%m%d %H%i%s') AND STR_TO_DATE(#endDate#, '%Y%m%d %H%i%s')
+	</select>
+	
 
 </mapper>

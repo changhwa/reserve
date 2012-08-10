@@ -52,29 +52,6 @@ public class AirlineScheduleDaoTest {
 		airlineSchedules[6] = new AirlineSchedule("BBB", "CCC", BASE_DATE2, BASE_DATE3, 1, 8000);
 	}
 
-	@Test
-	public void getDualAirportAirlineScheduleList() {
-		airlineScheduleDao.add(airlineSchedules[0]);
-		airlineScheduleDao.add(airlineSchedules[1]);
-
-		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(DateType.LANDING,
-				airlineSchedules[0].getTakeOffAirport(), airlineSchedules[0].getLandingAirport(), BASE_DATE1,
-				BASE_DATE3);
-		assertThat(airlineScheduleList.size(), is(1));
-		isMatchAirlineSchedule(airlineSchedules[0], airlineScheduleList.get(0));
-	}
-
-	@Test
-	public void getSingleAirportAirlineScheduleList() {
-		for (int idx = 0; idx < airlineSchedules.length; idx++) {
-			airlineScheduleDao.add(airlineSchedules[idx]);
-		}
-		List<AirlineSchedule> airlineScheduleList = airlineScheduleDao.get(AirportType.TAKE_OFF, DateType.LANDING,
-				"AAA", new Date(), BASE_DATE2);
-		for (int i = 0; i < airlineScheduleList.size(); i++) {
-			System.out.println(airlineScheduleList.get(i));
-		}
-	}
 
 	private void isMatchAirlineSchedule(AirlineSchedule airlineSchedule1, AirlineSchedule airlineSchedule2) {
 		// system.currentTimeMills가 밀리세컨드를 포함하여 테스트중 문제를 일으킴

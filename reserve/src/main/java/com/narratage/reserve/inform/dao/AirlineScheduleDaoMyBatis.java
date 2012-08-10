@@ -11,10 +11,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.narratage.reserve.inform.datatype.AirportType;
 import com.narratage.reserve.inform.datatype.DateType;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
-import com.narratage.reserve.inform.domain.Airport;
 
 @Repository("AirlineScheduleDao")
 public class AirlineScheduleDaoMyBatis extends SqlSessionDaoSupport implements AirlineScheduleDao {
@@ -22,20 +20,6 @@ public class AirlineScheduleDaoMyBatis extends SqlSessionDaoSupport implements A
 	private SqlSessionFactory sqlSessionFactory;
 
 	DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd hhmm");
-
-	@SuppressWarnings("unchecked")
-	public List<AirlineSchedule> get(AirportType airportType, DateType dateType, String airportIATA, Date beginDate,
-			Date endDate) {
-		HashMap<String, String> scheduleMap = new HashMap<String, String>();
-		scheduleMap.put("airportType", airportType.getSqlColName());
-		scheduleMap.put("dateType", dateType.getSqlColName());
-		scheduleMap.put("iata", airportIATA);
-		scheduleMap.put("beginDate", dateFormat.format(beginDate));
-		scheduleMap.put("endDate", dateFormat.format(endDate));
-
-		return (List<AirlineSchedule>) getSqlSession().selectList(
-				InformConst.PATH + "AirlineSchedule.getWithSingleAirport", scheduleMap);
-	}
 
 	@SuppressWarnings("unchecked")
 	public List<AirlineSchedule> get(DateType dateType, String takeOffAirport, String landingAirport, Date beginDate,
@@ -57,4 +41,22 @@ public class AirlineScheduleDaoMyBatis extends SqlSessionDaoSupport implements A
 		getSqlSession().insert(InformConst.PATH + "AirlineSchedule.add", airlineSchedule);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<HashMap<String, Object>> getPath(String takeOffAirport, String landingAirport, Date beginArriveDate,
+			Date endArriveDate) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd hhmm");
+		HashMap<String, String> scheduleMap = new HashMap<String, String>();
+
+		scheduleMap.put("takeOffAirport", takeOffAirport);
+		scheduleMap.put("landingAirport", landingAirport);
+		scheduleMap.put("beginDate", dateFormat.format(beginArriveDate));
+		scheduleMap.put("endDate", dateFormat.format(endArriveDate));
+
+		return (List<HashMap<String, Object>>) getSqlSession().selectList(InformConst.PATH + "AirlineSchedule.getPath",
+				scheduleMap);
+	}
+
+	public AirlineSchedule get(int airlineScheduleNo) {
+		return (AirlineSchedule) getSqlSession().selectOne(InformConst.PATH + "AirlineSchedule.get", airlineScheduleNo);
+	}
 }
