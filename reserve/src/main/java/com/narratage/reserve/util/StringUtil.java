@@ -24,4 +24,9 @@ public class StringUtil {
 		}		
 		return sb.toString();		
 	}
+
+	public static String[] split(String oriStr, String stand){
+		return oriStr.split(stand);
+	}
+
 }

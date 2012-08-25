@@ -16,7 +16,8 @@ public class ReseravationServiceImpl implements ReservationService{
 	
 
 	public boolean insertReserve(HashMap map) {
-		// TODO Auto-generated method stub 
+		System.out.println("여기들어오나??");
+		dao.insertReserve(map);
 		return false;
 	}
 

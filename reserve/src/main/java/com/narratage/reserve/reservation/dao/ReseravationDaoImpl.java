@@ -15,19 +15,21 @@ public class ReseravationDaoImpl extends SqlSessionDaoSupport implements Reserva
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
+	private String nameSpace="com.narratage.reserve.reservation.dao.ReservationDao.";
+	
 	public ArrayList findAirinformCodeReserve(String airinformCode) {
 		
-		return (ArrayList) getSqlSession().selectList("com.narratage.reserve.reservation.dao.ReservationDao.findAirinformCodeReserve", airinformCode);
+		return (ArrayList) getSqlSession().selectList(nameSpace+"findAirinformCodeReserve", airinformCode);
 	}
 
-	public int insertReserve(HashMap map) {
+	public Object insertReserve(HashMap map) {
 	
-		return (Integer) getSqlSession().insert("com.narratage.reserve.reservation.dao.ReservationDao.insertReserve",map);
+		return getSqlSession().insert(nameSpace+"insertReserve",map);
 	}
 
 	public int deleteReserve(String reservationCode) {
 		// TODO Auto-generated method stub
-		return (Integer) getSqlSession().delete("com.narratage.reserve.reservation.dao.ReservationDao.reservationCode",reservationCode);
+		return (Integer) getSqlSession().delete(nameSpace+"reservationCode",reservationCode);
 	}
 
 }
