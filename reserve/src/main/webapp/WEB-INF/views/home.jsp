@@ -2,19 +2,14 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>get user info</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-dffvfff
 
-<form name="test" action='/reserve/user/duplicate'  method="get">
-	<input type="text" name="userId" />
+<form name="test" action='/reserve/user/getUserInfo'  method="get">
+	<input type="text" name="user_id" />
 	<br>
 	<input type="submit" value="submit">
-
 </form>
 
 </body>
