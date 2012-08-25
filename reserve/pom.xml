@@ -225,6 +225,15 @@
 					</rulesets>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<findbugsXmlDirectory>target/site/findbugs</findbugsXmlDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 
