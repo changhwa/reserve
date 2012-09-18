@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.narratage.reserve.inform.dao.AirportDao;
 import com.narratage.reserve.inform.domain.Airport;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/mybatis/application-mybatis.xml")
 public class AirportDaoTest {

@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.narratage.reserve.inform.dao.AirlineScheduleDao;
 import com.narratage.reserve.inform.domain.AirlineSchedule;
@@ -24,7 +25,7 @@ import com.narratage.reserve.inform.domain.AirlineSchedule;
  * 
  * @author StevePak
  */
-//@Transactional
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/mybatis/application-mybatis.xml")
 public class AirlineScheduleDaoTest {
