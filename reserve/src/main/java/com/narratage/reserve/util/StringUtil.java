@@ -24,9 +24,49 @@ public class StringUtil {
 		}		
 		return sb.toString();		
 	}
+	
+	public final static boolean isNullOrEmpty(String strObj) {
+		if (strObj == null) {
+			return true;
+		}
 
-	public static String[] split(String oriStr, String stand){
-		return oriStr.split(stand);
+		int iLength = strObj.length();
+		int iStart = 0;
+
+		while ((iStart < iLength) && (strObj.charAt(iStart) <= ' ')) {
+			iStart++;
+		}
+
+		return (iStart == iLength);
+	}
+	
+	
+	public boolean validation(String pstrTitle) {
+		if (StringUtil.isNullOrEmpty(pstrTitle)) {
+			infoLog("strTitle is null or Empty!");
+			return false;
+		}
+		return true;
+	}
+	
+	
+	private void infoLog(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
+	/**
+	 * validation for DB select
+	 * @return
+	 */
+	public boolean validationForModify(String pstrTitle) {
+		if (StringUtil.isNullOrEmpty(pstrTitle)) {
+			infoLog("strTitle is null or Empty!");
+			return false;
+		}
+		return true;
+	}  
+	
+	
+	
 }
