@@ -11,3 +11,17 @@ function split(str1, str2) {
 	return arr1;
 
 }
+
+function removeArray(array,num){
+	var temp = new Array();
+
+	for(var i=0;i<array.length;i++){
+		if(num==array[i]){
+			array.splice(i,1);
+		}else{
+			temp.push(array[i]);
+		}
+	}
+
+	return temp;
+}

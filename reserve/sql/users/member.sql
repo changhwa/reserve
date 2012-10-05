@@ -15,5 +15,5 @@ CREATE TABLE `member` (
   `mileage` double DEFAULT NULL,
   `receive_mail` bit(1) DEFAULT NULL,
   `receive_sms` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY ('use_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
