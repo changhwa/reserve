@@ -18,20 +18,30 @@ public class BbsDaoImpl extends SqlSessionDaoSupport implements BbsDao {
 	@Autowired	
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public BbsVo selectBbsDetail(Integer BbsId) {
-		return (BbsVo) getSqlSession().selectList("com.narratage.reserve.bbs.dao.BbsDao.selectBbsDetail", BbsId);	
+	public BbsVo selectBbsDetail(Integer bbsId) {
+		return (BbsVo) getSqlSession().selectList("com.narratage.reserve.bbs.dao.BbsDao.selectBbsDetail", bbsId);	
 	}
 	
-	public List<BbsVo> selectBbsList(BbsVo BbsVo) {
-		return null;
+	public List<BbsVo> selectBbsList() {
+		System.out.println(" --------------- DAO select method 전");
+		return (List<BbsVo>) getSqlSession().selectList("com.narratage.reserve.bbs.dao.BbsDao.selectBbsList");
+//		System.out.println(" --------------- DAO select method 후");
+		
 	}
+	
+	public int selectMaxBbsId() {
+		System.out.println(" --------------- selectMaxBbsId");
+		System.out.println(" --------------- selectMaxBbsId method 전");
+		return (Integer)getSqlSession().selectOne("com.narratage.reserve.bbs.dao.BbsDao.selectMaxBbsId");
+	}
+	
 	public int insertBbs(BbsVo BbsVo) {
+		return (int) getSqlSession().insert("com.narratage.reserve.bbs.dao.BbsDao.insertBbs", BbsVo);	
+	}
+	public int updateBbs(Integer bbsId) {
 		return 1;
 	}
-	public int updateBbs(Integer BbsId) {
-		return 1;
-	}
-	public int deleteBbs(Integer BbsId) {
+	public int deleteBbs(Integer bbsId) {
 		return 1;
 	}
 	
