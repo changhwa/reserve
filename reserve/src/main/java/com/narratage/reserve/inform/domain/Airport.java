@@ -1,11 +1,7 @@
 package com.narratage.reserve.inform.domain;
 
-import java.io.Serializable;
 
-
-public class Airport implements Serializable{
-	private static final long serialVersionUID = -1431438219850077483L;
-	
+public class Airport {
 	private String iata;
 	private String city;
 	private String contry;

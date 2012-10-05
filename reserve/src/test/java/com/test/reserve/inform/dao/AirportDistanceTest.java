@@ -14,9 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.narratage.reserve.inform.dao.AirportDistanceDao;
 import com.narratage.reserve.inform.domain.AirportDistance;
 
-@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/mybatis/application-mybatis.xml")
+@Transactional
 public class AirportDistanceTest {
 
 	@Autowired

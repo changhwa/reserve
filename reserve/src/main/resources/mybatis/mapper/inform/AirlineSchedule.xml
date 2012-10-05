@@ -30,12 +30,12 @@
 		    airplaneCode,
 		    price
 		) VALUES (
-		    #{takeOffAirport},
-		    #{landingAirport},
-		    STR_TO_DATE(#{takeOffDate}, '%Y-%m-%d %H:%i:%s'),
-		    STR_TO_DATE(#{landingDate}, '%Y-%m-%d %H:%i:%s'),
-		    #{airplaneCode},
-		    #{price}
+		    #takeOffAirport#,
+		    #landingAirport#,
+		    STR_TO_DATE(#takeOffDate#, '%Y%m%d %H%i%s'),
+		    STR_TO_DATE(#landingDate#, '%Y%m%d %H%i%s'),
+		    #airplaneCode#,
+		    #price#
 		)
 	</insert>
 	
