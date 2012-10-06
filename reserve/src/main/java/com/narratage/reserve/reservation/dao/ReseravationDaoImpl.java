@@ -32,14 +32,4 @@ public class ReseravationDaoImpl extends SqlSessionDaoSupport implements Reserva
 		return (Integer) getSqlSession().delete(nameSpace+"reservationCode",reservationCode);
 	}
 
-	public int insertReserve(HashMap map) {
-	
-		return (Integer) getSqlSession().insert("com.narratage.reserve.reservation.dao.ReservationDao.insertReserve",map);
-	}
-
-	public int deleteReserve(String reservationCode) {
-		// TODO Auto-generated method stub
-		return (Integer) getSqlSession().delete("com.narratage.reserve.reservation.dao.ReservationDao.reservationCode",reservationCode);
-	}
-
 }

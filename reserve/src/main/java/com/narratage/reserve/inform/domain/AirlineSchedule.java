@@ -84,7 +84,7 @@ public class AirlineSchedule implements Comparable<AirlineSchedule> {
 	}
 
 	// 날짜 테스트용
-	public static SimpleDateFormat SDF = new SimpleDateFormat("YYYY년MM월DD일 hh:mm:ss");
+	//public static SimpleDateFormat SDF = new SimpleDateFormat("YYYY년MM월DD일 hh:mm:ss");
 
 	@Override
 	public String toString() {

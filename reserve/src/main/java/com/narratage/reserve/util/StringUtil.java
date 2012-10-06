@@ -67,6 +67,10 @@ public class StringUtil {
 		return true;
 	}  
 	
+	public static String[] split(String oriStr, String stand){
+		return oriStr.split(stand);
+	}
+	
 	
 	
 }

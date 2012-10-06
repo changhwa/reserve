@@ -12,3 +12,7 @@ reserve/.tags
 reserve/.tags_sorted_by_file
 reserve/reserve.sublime-project
 reserve/reserve.sublime-workspace
+reserve/.classpath
+reserve/.project
+reserve/.springBeans
+reserve/.setting/*
