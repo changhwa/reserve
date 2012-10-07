@@ -28,7 +28,7 @@ public class AirportDaoJdbc implements AirportDao {
 			airport.setIata(rs.getString("IATA"));
 			airport.setLatitude(rs.getDouble("Latitude"));
 			airport.setLongtitude(rs.getDouble("Longtitude"));
-			airport.setQueriedNumber(rs.getInt("Queried_Number"));
+			airport.setQuriedNumber(rs.getInt("Quried_Number"));
 			airport.setTimezone(rs.getFloat("Timezone"));
 			return airport;
 		}

@@ -17,6 +17,7 @@ import com.narratage.reserve.inform.dao.AirportDistanceDao;
 import com.narratage.reserve.inform.domain.Airport;
 import com.narratage.reserve.inform.service.AirportDistanceService;
 
+@ContextConfiguration(locations = "/mybatis/application-mybatis.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AirportDistanceServiceImplTest {
 	@Autowired
