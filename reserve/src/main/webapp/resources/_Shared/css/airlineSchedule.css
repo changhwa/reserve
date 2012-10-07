@@ -1,0 +1,38 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.slideContent {
+	display: none;
+}
+
+.accordion:before {
+	content: "";
+	padding: 1px;
+	clear: both;
+	display: block
+}
+
+.schedule_header {
+	text-align: center;
+	min-width: 625px;
+}
+
+.schedule_header h3 {
+	width: 120px;
+	text-align: center;
+	display: inline-block;
+}
+.accordion-toggle {
+	text-align: center;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+.accordion-toggle div {
+	width: 120px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 auto;
+}
+
