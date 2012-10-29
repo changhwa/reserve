@@ -17,7 +17,7 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-	<bean 	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<value>classpath:properties/mysql.properties</value>
 		</property>
