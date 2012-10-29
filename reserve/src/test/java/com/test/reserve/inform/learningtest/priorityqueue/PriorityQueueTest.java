@@ -3,7 +3,13 @@ package com.test.reserve.inform.learningtest.priorityqueue;
 import java.util.PriorityQueue;
 import java.util.Random;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/mybatis/application-mybatis.xml"})
 public class PriorityQueueTest {
 	public static void main(String[] args) {
 		PriorityQueue<Element> q = new PriorityQueue<Element>();
@@ -20,5 +26,10 @@ public class PriorityQueueTest {
 		for (int i = 0; i < size; i++) {
 			System.out.println(q.poll().getNum());
 		}
+	}
+	
+	@Test
+	public void temp(){
+		
 	}
 }
