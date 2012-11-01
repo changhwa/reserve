@@ -8,11 +8,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 
-@Controller
 public abstract class UtilLog {
 	
 	private Logger logger = Logger.getLogger(getClass());
