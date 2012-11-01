@@ -1,4 +1,4 @@
-package com.test.reserve.seat.service;
+package com.test.reserve.airplane.service;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
