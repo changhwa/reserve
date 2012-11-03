@@ -1,7 +1,10 @@
 package com.narratage.reserve.inform.domain;
 
+import java.io.Serializable;
 
-public class Airport {
+public class Airport implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String iata;
 	private String city;
 	private String contry;
@@ -16,7 +19,6 @@ public class Airport {
 		super();
 	}
 
-	
 	public Airport(String iata, String city, String contry, Double latitude, Double longtitude, float altitude,
 			float timezone, String dst, int queriedNumber) {
 		super();
@@ -31,6 +33,13 @@ public class Airport {
 		this.queriedNumber = queriedNumber;
 	}
 
+	public int getQueriedNumber() {
+		return queriedNumber;
+	}
+
+	public void setQuriedNumber(int queriedNumber) {
+		this.queriedNumber = queriedNumber;
+	}
 
 	public String getIata() {
 		return iata;
@@ -94,14 +103,6 @@ public class Airport {
 
 	public void setDst(String dst) {
 		this.dst = dst;
-	}
-
-	public int getQueriedNumber() {
-		return queriedNumber;
-	}
-
-	public void setQueriedNumber(int queriedNumber) {
-		this.queriedNumber = queriedNumber;
 	}
 
 }
