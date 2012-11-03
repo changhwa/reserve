@@ -19,12 +19,12 @@
 
 	<select id="get" resultMap="airport-info" parameterType="String">
 		SELECT *
-		  FROM AIRPORT
-		 WHERE IATA=${IATA}
+		  FROM airport
+		 WHERE IATA=#{IATA}
 	</select>
 	
 	<insert id="add" parameterType="com.narratage.reserve.inform.domain.Airport">
-		INSERT INTO AIRPORT(
+		INSERT INTO airport(
 		    IATA,
 		    City,
 		    Contry,
@@ -36,22 +36,22 @@
 		    Queried_number
 		)
 		VALUES(
-		    ${iata},
-		    ${city},
-		    ${contry},
-		    ${latitude},
-		    ${longtitude},
-		    ${altitude},
-		    ${timezone},
-		    ${dst},
-		    ${queriedNumber}    
+		    #{iata},
+		    #{city},
+		    #{contry},
+		    #{latitude},
+		    #{longtitude},
+		    #{altitude},
+		    #{timezone},
+		    #{dst},
+		    #{queriedNumber}    
 		)			
 	</insert>
 
 	<update id="updatePlusOneAtQueriedNumber" parameterType="String">
 		UPDATE AIRPORT SET
 			Queried_number = Queried_number+1
-		 WHERE IATA = ${IATA}
+		 WHERE IATA = #{IATA}
 	</update>
 
 </mapper>

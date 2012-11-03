@@ -1,4 +1,4 @@
-package com.test.reserve.seat.service;
+package com.test.reserve.airplane.service;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -14,12 +14,12 @@ import com.narratage.reserve.util.StringUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:/mybatis/application-mybatis.xml")
-public class TestSeatService {
+public class SeatServiceImplTest {
 
 	//given
 	
 	String seatValue;
-	TestSeatService service;
+	SeatServiceImplTest service;
 	String[] temp;
 	char[] joinSeatValue;
 	ArrayList tempList = new ArrayList();
@@ -34,7 +34,7 @@ public class TestSeatService {
 		seatValue="01010101013#00000000003#11111111113#11111111113#00000000003#0101010101";
 		
 		temp = seatValue.split("#");
-		service = new TestSeatService();
+		service = new SeatServiceImplTest();
 		joinSeatValue = StringUtil.arrayToString(temp).toCharArray();
 		
 		// Then post webpage

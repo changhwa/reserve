@@ -8,8 +8,8 @@
 	<select id="get" resultType="double" parameterType="java.util.HashMap">
 		SELECT DISTANCE
 		  FROM AIRPORT_DISTANCE
-		 WHERE      FIRST_AIRPORT=${firstAirport}
-		      AND SECOND_AIRPORT=${secondAirport}
+		 WHERE      FIRST_AIRPORT= #{firstAirport}
+		      AND SECOND_AIRPORT=#{secondAirport}
 	</select>
 	
 	<insert id="add" parameterType="com.narratage.reserve.inform.domain.AirportDistance">
@@ -18,9 +18,9 @@
 		  ,second_airport
 		  ,distance
 		) VALUES (
-		  ,${firstAirport}
-		  ,${secondAirport}
-		  ,${distance}
+		  ,#{firstAirport}
+		  ,#{secondAirport}
+		  ,#{distance}
 		)			
 	</insert>
 </mapper>

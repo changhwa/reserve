@@ -28,6 +28,7 @@ import com.narratage.reserve.inform.domain.AirlineSchedule;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/mybatis/application-mybatis.xml"})
 @Transactional
 public class AirlineScheduleDaoTest {
 	private static final Date BASE_DATE1 = new Date(System.currentTimeMillis());
@@ -51,20 +52,12 @@ public class AirlineScheduleDaoTest {
 		airlineSchedules[5] = new AirlineSchedule("AAA", "BBB", BASE_DATE2, BASE_DATE3, 1, 6000);
 		airlineSchedules[6] = new AirlineSchedule("BBB", "CCC", BASE_DATE2, BASE_DATE3, 1, 8000);
 	}
-
-
-	private void isMatchAirlineSchedule(AirlineSchedule airlineSchedule1, AirlineSchedule airlineSchedule2) {
-		// system.currentTimeMills가 밀리세컨드를 포함하여 테스트중 문제를 일으킴
-		// 포멧을 사용하여 문제점 해결
-		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-
-		assertThat(airlineSchedule1.getAirplaneCode(), is(airlineSchedule2.getAirplaneCode()));
-		assertThat(airlineSchedule1.getLandingAirport(), is(airlineSchedule2.getLandingAirport()));
-		assertThat(airlineSchedule1.getPrice(), is(airlineSchedule2.getPrice()));
-		assertThat(airlineSchedule1.getTakeOffAirport(), is(airlineSchedule2.getTakeOffAirport()));
-
-		assertThat(df.format(airlineSchedule1.getTakeOffDate()), is(df.format(airlineSchedule2.getTakeOffDate())));
-		assertThat(df.format(airlineSchedule1.getLandingDate()), is(df.format(airlineSchedule2.getLandingDate())));
+	
+	@Test
+	public void temp(){
+		
 	}
+
+
 
 }
