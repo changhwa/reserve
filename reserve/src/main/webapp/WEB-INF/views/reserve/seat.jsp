@@ -14,19 +14,19 @@
 	<div id="seat">
 
 		<c:forEach var="num" items="${seatNum}" varStatus="status">
-
+			
 			<c:choose>
-				<c:when test="${num=='0' }">
+				<c:when test="${num == '48' }">
 					<div class="blankSeat"></div>
 				</c:when>
-				<c:when test="${num=='1' }">
-					<div id="seatName${status.count }" class="noReserveSeat"
-						onclick="selectedSeat(${status.count})"></div>
+				<c:when test="${num == '49' }">
+				
+					<div id="seatName${status.count }" class="noReserveSeat" onclick="selectedSeat(${status.count})"></div>
 				</c:when>
-				<c:when test="${num=='2' }">
+				<c:when test="${num == '50' }">
 					<div class="reserveSeat"></div>
 				</c:when>
-				<c:when test="${num=='3' }">
+				<c:when test="${num == '51' }">
 					<br />
 				</c:when>
 			</c:choose>
